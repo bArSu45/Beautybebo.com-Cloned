@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import Admin from '../Pages/Admin/Admin'
 import Cart from '../Pages/Cart/Cart'
 import Checkout from '../Pages/Checkout/Checkout'
 import Home from '../Pages/Home/Home'
@@ -17,6 +18,7 @@ export default function AllRoutes() {
                 <Route path='/payment' element={<Payment />} />
                 <Route path='/products' element={<Products />} />
                 <Route path='/products/:id' element={<SingleProduct />} />
+                <Route path="/admin" element={<Admin/>}     />
             </Routes>
         </div>
     )

@@ -1,0 +1,52 @@
+.productCard {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.ImageTable {
+  width: 30%;
+  border: 1px solid rgb(165, 161, 161);
+  padding: 5px;
+}
+.ImageTable:hover {
+  cursor: pointer;
+
+  border: 1px solid rgb(245, 13, 156);
+}
+.QtyBox {
+  height: 30px;
+  padding: 2px 8px;
+  border: 1px solid rgb(182, 176, 176);
+}
+.SubHeading2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+.line {
+  position: relative;
+  top: 15px;
+  border: none;
+  height: 1px;
+  background: rgb(155, 152, 152);
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 550px) {
+  .SubHeading2 {
+    gap: 8px;
+  }
+  .ImageTable {
+    width: 40%;
+    height: 40%;
+    padding: 2px;
+  }
+}
+
+@media screen and (min-width: 701px) and (max-width: 900px) {
+  .SubHeading2 {
+    gap: 10px;
+  }
+}
