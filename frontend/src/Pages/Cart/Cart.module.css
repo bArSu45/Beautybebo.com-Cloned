@@ -1,0 +1,99 @@
+.Cart {
+  width: 95%;
+  margin: auto;
+  margin-top: 18px;
+}
+
+.Heading {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+.Containt {
+  width: 60%;
+}
+.SubHeading2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+.SubCart {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.line {
+  position: relative;
+  top: 10px;
+  border: none;
+  height: 4px;
+  background: rgb(170, 169, 169);
+  margin-bottom: 20px;
+}
+.line2 {
+  position: relative;
+  top: 15px;
+  border: none;
+  height: 1px;
+  background: rgb(197, 194, 194);
+  margin-bottom: 20px;
+}
+.Payment {
+  width: 30%;
+  border: 1px solid grey;
+  padding: 2%;
+}
+.PaymentBox {
+  border: 1px solid grey;
+  padding: 2%;
+  background-color: rgb(226, 223, 223);
+  text-align: center;
+  margin-top: 15px;
+}
+.button1 {
+  text-align: center;
+  padding: 5px;
+}
+@media screen and (max-width:700px) {
+  .SubCart {
+  margin-top: 20px;
+  margin: auto;
+  display: grid;
+  gap:40px
+
+}
+.Containt{
+  width: 100%;
+}
+.Payment {
+  width:75%;
+  margin: auto;
+  margin-top: 18px;
+}
+.SubCart>div:nth-child(2) {
+  grid-row: 1;
+}
+}
+
+@media screen and (min-width:701px) and (max-width:900px) {
+.SubHeading2{
+  gap:15px
+}
+  .Payment {
+  width:38%;
+ 
+}
+  
+}
+
+@media screen and (min-width:300px) and (max-width:550px) {
+.Payment {
+  width:80%;
+ 
+}
+.SubHeading2{
+  gap:10px
+}
+}

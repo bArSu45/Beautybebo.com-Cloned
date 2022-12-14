@@ -1,0 +1,15 @@
+.Checkout{
+    width:95%;
+    margin: auto;
+}
+
+.line {
+  position: relative;
+  width: 60%;
+  top: 10px;
+  border: none;
+  height: 1px;
+  background: rgb(170, 169, 169);
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
