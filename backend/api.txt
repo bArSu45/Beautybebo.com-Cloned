@@ -1,0 +1,13 @@
+1. SIGNUP ( POST ) = https://average-jersey-bat.cyclic.app/users/signup
+
+2. LOGIN ( POST ) = https://average-jersey-bat.cyclic.app/users/login
+
+3. ADD PRODUCT ( POST ) = https://average-jersey-bat.cyclic.app/products
+
+4. GET PRODUCTS ( GET ) = https://average-jersey-bat.cyclic.app/products
+
+5. GET PRODUCT BY ID ( GET ) = https://average-jersey-bat.cyclic.app/products/${id}
+
+6. UPDATE PRODUCT ( PUT ) = https://average-jersey-bat.cyclic.app/products/${id}
+
+7. DELETE PRODUCT ( DELETE ) = https://average-jersey-bat.cyclic.app/products/${id}
