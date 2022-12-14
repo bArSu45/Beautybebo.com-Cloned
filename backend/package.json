@@ -1,0 +1,19 @@
+{
+  "name": "beautybebo.com-backend",
+  "version": "1.0.0",
+  "description": "This is the backend of beautybebo.com.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhijit Biswas",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.8.0"
+  }
+}
