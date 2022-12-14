@@ -1,0 +1,43 @@
+#makeup_main_div{
+    width: 20%;
+    border: 2px solid red;
+}
+#makeup_img_div{
+    border: 2px solid pink;
+}
+#makeup_name_div{
+    border: 2px solid orangered;
+}
+#go_star_div{
+    display: flex;
+    width: 35%;
+    gap: 10px;
+    margin: auto;
+    border: 2px solid black;
+}
+#add_to_cart_div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin: auto; */
+    border: 2px solid green;
+    width: 100%;
+    color: white;
+    background-color: #DD2085;
+}
+#main_add_cart_div{
+    display: flex;
+    width: 50%;
+    border: 2px solid yellowgreen;
+    justify-content: space-between;
+    margin: auto;
+    gap: 10px;
+}
+#hrt_div{
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    border-radius: 7px;
+}

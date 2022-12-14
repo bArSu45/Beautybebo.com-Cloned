@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#main_container_div{
+    border: 2px solid green;
+}
+#fst_main_div {
+    width: 80%;
+    margin: auto;
+    height: 500px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid blue;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+#upper_sidebar {
+    width: 25%;
+    height: auto;
+    border: 2px solid black;
+}
+
+#fst_carousel_div {
+    width: 75%;
+    height: 300px;
+    border: 2px solid red;
+}
+
+#upto_40_off_div{
+    width: 100%;
+    border: 2px solid blueviolet;
+}
+#upto_40_off_div>img{
+    margin: auto;
+    width: 80%;
+}
+
+#joy_lotus_div{
+    width: 80%;
+    border: 2px solid blueviolet;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
