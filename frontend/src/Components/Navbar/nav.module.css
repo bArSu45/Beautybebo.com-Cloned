@@ -1,0 +1,108 @@
+.top {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  background-color:#ffecf3 ;
+ 
+}
+
+.imagediv {
+  height: 90px;
+  width: 300px;
+  border: 3px solid #dd0285;
+  border-radius: 5px;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.login {
+  width: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 0.5px solid black; */
+}
+.icon:hover {
+  background-color: #dd0285;
+  color: white;
+  border-radius: 10px;
+}
+
+
+/* * droper down css starts from here */
+
+.ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: red;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.li {
+  float: left;
+}
+
+.li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+  border: 1px solid black;
+}
+
+.li.dropdown {
+  display: inline-block;
+}
+
+.dropdown_content {
+
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 999;
+  
+}
+.dropdown_div{
+border: 1px solid red;
+display:flex;
+}
+
+.dropdown_content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+ display: flex;
+ 
+ 
+  text-align: left;
+}
+
+.dropdown_content a:hover {color: "teal"}
+
+.dropdown:hover .dropdown_content {
+  display: block;
+ min-width: 600px;
+}
