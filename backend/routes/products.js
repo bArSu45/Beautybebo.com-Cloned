@@ -6,11 +6,12 @@ const {
   updateProduct,
   deleteProduct,
 } = require("../controllers/productController");
+const { verifyTokenAndAdmin } = require("../middlewares/verifyToken");
 
 const productRoute = express.Router();
 
 /* CREATE */
-productRoute.post("/", addProduct);
+productRoute.post("/", verifyTokenAndAdmin, addProduct);
 
 /* GET ALL PRODUCTS */
 productRoute.get("/", getProducts);
@@ -19,9 +20,9 @@ productRoute.get("/", getProducts);
 productRoute.get("/:id", getProductsById);
 
 /* UPDATE PRODUCT */
-productRoute.put("/:id", updateProduct);
+productRoute.put("/:id", verifyTokenAndAdmin, updateProduct);
 
 /* DELETE */
-productRoute.delete("/:id", deleteProduct);
+productRoute.delete("/:id", verifyTokenAndAdmin, deleteProduct);
 
 module.exports = productRoute;

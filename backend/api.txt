@@ -11,3 +11,9 @@
 6. UPDATE PRODUCT ( PUT ) = https://average-jersey-bat.cyclic.app/products/${id}
 
 7. DELETE PRODUCT ( DELETE ) = https://average-jersey-bat.cyclic.app/products/${id}
+
+8. GET ALL USERS ( GET ) = https://average-jersey-bat.cyclic.app/users
+
+9. GET USER BY ID ( GET ) = https://average-jersey-bat.cyclic.app/users/${id}
+
+10. DELETE USER ( DELETE ) = https://average-jersey-bat.cyclic.app/users/${id}
