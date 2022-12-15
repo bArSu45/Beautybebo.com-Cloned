@@ -5,6 +5,9 @@
   gap: 10px;
   justify-content: space-between;
 }
+.main{
+  position: relative;
+}
 .ImageTable {
   width: 30%;
   border: 1px solid rgb(165, 161, 161);
