@@ -1,0 +1,42 @@
+.EditContainer1 {
+  display: none;
+  margin: auto;
+  padding: 10px;
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.EditContainer2 {
+  width:40%;
+  margin: auto;
+  position: absolute;
+  z-index: 2;
+  left: 25%;
+  background-color: rgb(255, 249, 254);
+  display: grid;
+  margin: auto;
+  padding: 5px 10px;
+  border: 1px solid grey;
+  text-align: center;
+  border-radius: 15px ;
+}
+.Cancel{
+  display: flex;
+  justify-content: flex-end;
+}
+.Cancel>button{
+  font-size: 18px;
+}
+.Container{
+  padding:40px 20px;
+}
+.imageTable {
+  width: 40%;
+  margin: auto;
+ 
+  border: 1px solid grey;
+}
+.TextTable {
+  width: 5%;
+  margin: auto;
+}

@@ -22,6 +22,7 @@ export const getUserFailure = () => {
 }
 
 export const getUserLogin = (queryParams) => (dispatch) => {
+    
     dispatch(getUserRequest())
     return axios.post(`${backend_url}/users/login`, queryParams)
         .then((r) => {
