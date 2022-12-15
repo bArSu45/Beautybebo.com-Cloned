@@ -1,0 +1,41 @@
+.top {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  background-color:#ffecf3 ;
+}
+
+.imagediv {
+  height: 90px;
+  width: 300px;
+  border: 3px solid #dd0285;
+  border-radius: 5px;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.login {
+  width: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 0.5px solid black; */
+}
+.icon:hover {
+  background-color: #dd0285;
+  color: white;
+  border-radius: 10px;
+}
