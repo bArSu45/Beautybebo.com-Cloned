@@ -4,21 +4,24 @@
 }
 #main_div{
     display: flex;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 80%;
     margin: auto;
+    margin-top: 20px ;
+    margin-bottom: 20px;
 }
 .single_div{
 width: 30%;
-border: 3px solid black;
+border: 1px solid rgb(211, 208, 208);
 padding: 10px 10px 10px 10px;
 }
 .single_div:hover{
-    background-color: rgb(250, 102, 208);
+    background-color: rgb(255, 192, 241);
 }
 .single_div>div>img{
     margin: auto;
 }
 .single_div>p{
     font-weight: 700;
+    text-align: center;
 }
