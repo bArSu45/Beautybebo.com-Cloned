@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ChevronRightIcon, HamburgerIcon } from "@chakra-ui/icons"
 import style from "./Sidebar.module.css"
 export default function Sidebar({ makeup, setMakeup, setSkin, setHair, skin, hair }) {

@@ -2,10 +2,13 @@ import Carousel from 'react-bootstrap/Carousel';
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import style from "./Homepage.module.css"
-import Makeup from './SidebarHover/Makeup';
-import Skin from './SidebarHover/Skin';
-import Hair from './SidebarHover/Hair';
+import LastPara from './LastPara/LastPara';
 import Sidebar from './Sidebar/Sidebar';
+import Makeup from './SidebarHover/Makeup';
+import Hair from './SidebarHover/Hair';
+import Skin from './SidebarHover/Skin';
+import Category from './Category/Category';
+import MakeupCategory from './MakeupCategory/MakeupCategory';
 
 export default function Home() {
 
@@ -58,8 +61,27 @@ export default function Home() {
     <img src="https://www.beautybebo.com/pub/media/ads/joy_banner.gif" alt="" />
     <img src="https://www.beautybebo.com/pub/media/ads/lotus_banner.gif" alt="" />
 </div>
+
+<div>
+    <Category />
+</div>
+
+<div>
+    <MakeupCategory />
+</div>
+
+<div id={style.upto_50_off_div}>
+    <img src="https://www.beautybebo.com/pub/media/ads/Forent_Banner_5-min.jpg" alt="" />
+</div>
+
+<div id={style.gift_liya_ky_div}>
+    <img src="https://www.beautybebo.com/pub/media/ads/1599-Forent-banner-4.gif" alt="" />
+</div>
+
+<div>
+    <LastPara />
+</div>
         </div>
     )
 }
-
 

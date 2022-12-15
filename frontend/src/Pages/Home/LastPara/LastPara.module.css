@@ -1,0 +1,17 @@
+#main_para_div{
+    width: 80%;
+    margin: auto;
+}
+#main_para_div>h1{
+font-size: 35px;
+color: grey;
+font-weight: 500;
+text-align: left;
+}
+
+#main_para_div>p{
+    font-size: 18px;
+    color: grey;
+    font-weight: 400;
+    text-align: left;
+}
