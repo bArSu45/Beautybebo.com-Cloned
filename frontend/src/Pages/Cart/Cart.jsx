@@ -2,47 +2,65 @@ import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { memo, useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonComponent from "../../Components/ButtonComponent";
 import Loading from "../../Components/CartProductCard/Loading";
 import ProductCard from "../../Components/CartProductCard/ProductCard";
-import { GET_CARD_DATA } from "../../Redux/CartReducer/CartAction";
+import {
+  EDIT_CARD_DELETE,
+  GET_CARD_DATA,
+} from "../../Redux/CartReducer/CartAction";
 
 import styles from "./Cart.module.css";
 
+function simulateNetworkRequest() {
+  return new Promise((resolve) => setTimeout(resolve, 1000));
+}
+
 function Cart() {
-  const [data, setData] = useState({CardItem:[],total:0});
+  const [data, setData] = useState({ CardItem: [], total: 0, render: false });
   const { Cart_Items, loading, auth, error } = useSelector(
     (store) => store.CartReducer
   );
+  const { loading2, auth2 } = useSelector((store) => store.CartUpdateReducer);
   const shpping_carge = 57;
+  const Navigate = useNavigate();
   const dispatch = useDispatch();
+  const handleDelete = (id) => {
+    dispatch(EDIT_CARD_DELETE(id)).then(() => getCard_data());
+    simulateNetworkRequest().then(()=>setData({...data,render:true}))
+  };
+
+  const UpdateCart = () => {
+    getCard_data()
+    simulateNetworkRequest().then(() => setData({ ...data, render: true }));
+  }
 
   const getCard_data = () => {
     dispatch(GET_CARD_DATA());
-     const total_val = Cart_Items.reduce((sum, a) => {
-       return sum + a.price*a.qty;
-     }, 0);
-    setData({ ...data,CardItem: Cart_Items, total:total_val});
+    const total_val = Cart_Items.reduce((sum, a) => {
+      return sum + a.price * a.qty;
+    }, 0);
+    setData({ ...data, CardItem: Cart_Items, total: total_val, render: false});
   };
-  
- 
+
+  const handleCheckout = () => {
+    Navigate("/checkout", { state: { total_price: data.total} });
+  };
 
   useEffect(() => {
     getCard_data();
-    
-  }, [auth]);
-
- 
+  }, [auth, data.render]);
 
   return (
     <div className={styles.Cart}>
       <Box>
         <Heading fontSize="25px">SHOPPING CART </Heading>
       </Box>
-      {loading ? (
-        <div className={styles.Loading} ><Loading /> </div>
-        
+      {loading || data.render ? (
+        <div className={styles.Loading}>
+          <Loading />
+        </div>
       ) : (
         <div>
           {data.CardItem.length === 0 ? (
@@ -81,6 +99,8 @@ function Cart() {
                         price={card.price}
                         qty={card.qty}
                         id={card.id}
+                        handleDelete={() => handleDelete(card.id)}
+                        getCard_data={UpdateCart}
                       />
                       <div className={styles.EditComponent}></div>
                       <hr className={styles.line} />
@@ -88,19 +108,22 @@ function Cart() {
                   ))}
                   <div>
                     <hr className={styles.line2} />
-                    <Flex justifyContent="space-between">
-                      <ButtonComponent
+                        <Flex justifyContent="space-between">
+                          <Link to="/" >   <ButtonComponent
                         Title={"CONTINUE SHOPPING"}
                         txtColor={"white"}
                         bgColor={"grey"}
-                        buttonColor={"pink"}
-                      />
+                            buttonColor={"pink"}
+                    
+                      /> </Link>
+                    
 
                       <ButtonComponent
                         Title={"UPDATE SHOPPING CART"}
                         txtColor={"white"}
                         bgColor={"grey"}
-                        buttonColor={"pink"}
+                            buttonColor={"pink"}
+                            handleClick={UpdateCart}
                       />
                     </Flex>{" "}
                   </div>
@@ -155,6 +178,7 @@ function Cart() {
                     txtColor={"white"}
                     bgColor={"grey"}
                     buttonColor="pink"
+                    handleClick={handleCheckout}
                   />
                 </div>
               </div>
@@ -166,4 +190,4 @@ function Cart() {
   );
 }
 
-export default memo(Cart);
+export default Cart;

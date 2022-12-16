@@ -1,5 +1,9 @@
 
 export const CART_REQUEST = "CART_REQUEST";
-export const CART_TOTAL = "CART_LOADING";
 export const CART_SUCCESS = "CART_SUCCESS";
 export const CART_ERROR = "CART_ERROR";
+
+
+export const CART_UPDATE = "CART_UPDATE";
+export const CART_UPDATE_REQ = "CART_UPDATE_REQ";
+export const CART_UPDATE_FAILED="CART_UPDATE_FAILED"

@@ -5,14 +5,25 @@ import InputComponent from "../../Components/InputComponent";
 import styles from "./Checkout.module.css";
 import { initialState, InputArray, inputs } from "../../Utils/localData";
 import ButtonComponent from "../../Components/ButtonComponent";
+import { useLocation, useNavigate } from "react-router-dom";
+import Confirm from "./Confirm";
 
 export default function Checkout() {
   const [data, setData] = useState(initialState);
-
+  const Navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
+
+  const handlePaymentLink = (e) => {
+    e.preventDefault();
+    Navigate("/payment", {
+      state: { total_price: location.state.total_price },
+    });
+  }
 
   return (
     <div className={styles.Checkout}>
@@ -20,8 +31,8 @@ export default function Checkout() {
         <Heading mt="15px" fontSize="25px">
           Shipping Address
         </Heading>
-        <div>
-          <div>
+        <Flex justifyContent="space-between">
+          <Box w="60%">
             <form>
               {InputArray.map((input, index) => (
                 <Box mt="10px" key={index}>
@@ -31,7 +42,6 @@ export default function Checkout() {
                   </Flex>
 
                   <InputComponent
-                    width="60%"
                     placeholder={`Enter Your ${inputs[index]}`}
                     type="text"
                     name={input}
@@ -41,8 +51,11 @@ export default function Checkout() {
                 </Box>
               ))}
             </form>
+          </Box>
+          <div className={styles.Amount}>
+            <Text>Total AMount:₹{location.state.total_price}.00</Text>
           </div>
-        </div>
+        </Flex>
         <Heading mt="45px" ml="3px" fontSize="20px">
           Delivery Charges
         </Heading>
@@ -55,12 +68,8 @@ export default function Checkout() {
             </Text>
           </Flex>
 
-          <ButtonComponent
-            Title="Next"
-            buttonColor={"pink"}
-            txtColor={"white"}
-            bgColor={"grey"}
-          />
+          
+          <Confirm  amount={location.state.total_price} />
         </Flex>
       </div>
     </div>
