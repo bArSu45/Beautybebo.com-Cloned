@@ -1,14 +1,39 @@
 import { Flex, Text } from "@chakra-ui/react";
 import { memo, useEffect, useState } from "react";
-import { Image } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { Image, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { EDIT_CARD_DATA } from "../../Redux/CartReducer/CartAction";
 import ButtonComponent from "../ButtonComponent";
+import Loading from "../CartProductCard/Loading";
 import styles from "./EditComponent.module.css";
-
-function EditComponent({ image, qty, price,desc, open, handleOpen }) {
+function simulateNetworkRequest() {
+  return new Promise((resolve) => setTimeout(resolve, 2000));
+}
+function EditComponent({
+  image,
+  qty,
+  price,
+  desc,
+  open,
+  handleOpen,
+  id,
+  getCard_data,
+}) {
+  const { loading2, auth2 } = useSelector((store) => store.CartUpdateReducer);
   const [data, setData] = useState({ Price: price, Qty: qty });
-
+  const [load, setLoad] = useState(false);
   const dispatch = useDispatch();
+
+  const handleConfirm = async (e) => {
+    e.preventDefault();
+    setLoad(true);
+    const Value = { id: id, qty: data.Qty };
+    dispatch(EDIT_CARD_DATA(Value));
+    await simulateNetworkRequest().then((res) => setLoad(false));
+    getCard_data();
+  };
+
+  useEffect(() => {}, [load]);
 
   const handleClick = (e) => {
     // e.preventDefault();
@@ -30,62 +55,71 @@ function EditComponent({ image, qty, price,desc, open, handleOpen }) {
     }
   };
   return (
-    <>
+    <Modal show={open}>
       <div className={open ? styles.EditContainer2 : styles.EditContainer1}>
-        <div className={styles.Cancel}>
-          <button onClick={handleOpen}>X</button>
-        </div>
-        <div className={styles.Container}>
-          <div className={styles.imageTable}>
-            <Flex justifyContent="center" alignItems="center">
-              <Image mt="10px" src={image} />
-            </Flex>
+        {load ? (
+          <div className={styles.Loading}>
+            <Loading />
           </div>
-          <Text fontSize="12px">{desc}</Text>
-          <Flex
-            justifyContent="center"
-            mt="15px"
-            gap="5px "
-            alignItems="center"
-          >
-            <Text>QTY: </Text>
-            <Flex border="1px solid grey" gap="5px" p="1">
-              <button onClick={handleClick}> +</button>
-              {data.Qty}
-              <button onClick={handleClick2}> -</button>
-            </Flex>
-          </Flex>
-          <div>
-            <Flex
-              justifyContent="center"
-              mt="15px"
-              gap="5px"
-              alignItems="center"
-            >
-              <Text>Price: </Text>
-              <Text p="5px">₹{data.Price}.00</Text>
-            </Flex>
-          </div>
-          <Flex mt="15px" gap="25px" justifyContent="space-between">
-            <ButtonComponent
-              Title={"Update Cart"}
-              txtColor={"white"}
-              bgColor={"rgb(245, 13, 156)"}
-              buttonColor="pink"
-              size="sm"
-            />
-            <ButtonComponent
-              Title={"Close"}
-              txtColor={"white"}
-              bgColor={"rgb(245, 13, 156)"}
-              buttonColor="red"
-              size="sm"
-              handleClick={handleOpen}
-            />
-          </Flex>
-        </div>
+        ) : (
+          <>
+            <div className={styles.Cancel}>
+              <button onClick={handleOpen}>X</button>
+            </div>
+            <div className={styles.Container}>
+              <div className={styles.imageTable}>
+                <Flex justifyContent="center" alignItems="center">
+                  <Image mt="10px" src={image} />
+                </Flex>
+              </div>
+              <Text fontSize="12px">{desc}</Text>
+              <Flex
+                justifyContent="center"
+                mt="15px"
+                gap="5px "
+                alignItems="center"
+              >
+                <Text>QTY: </Text>
+                <Flex border="1px solid grey" gap="5px" p="1">
+                  <button onClick={handleClick}> +</button>
+                  {data.Qty}
+                  <button onClick={handleClick2}> -</button>
+                </Flex>
+              </Flex>
+              <div>
+                <Flex
+                  justifyContent="center"
+                  mt="15px"
+                  gap="5px"
+                  alignItems="center"
+                >
+                  <Text>Price: </Text>
+                  <Text p="5px">₹{data.Price}.00</Text>
+                </Flex>
+              </div>
+              <Flex mt="15px" gap="25px" justifyContent="space-between">
+                <ButtonComponent
+                  Title={"Update Cart"}
+                  txtColor={"white"}
+                  bgColor={"rgb(245, 13, 156)"}
+                  buttonColor="pink"
+                  size="sm"
+                  handleClick={handleConfirm}
+                />
+                <ButtonComponent
+                  Title={"Close"}
+                  txtColor={"white"}
+                  bgColor={"rgb(245, 13, 156)"}
+                  buttonColor="red"
+                  size="sm"
+                  handleClick={handleOpen}
+                />
+              </Flex>
+            </div>
+          </>
+        )}
       </div>
-    </>
+    </Modal>
   );
 }
 

@@ -1,16 +1,18 @@
 .AdminSidebar{
     width:20%;
-    padding: 2%;
+    padding:2%;
     border: 1px solid grey;
     background-color: rgb(65, 62, 62);
     color: white;
-    height:100vh;
+    height:80vh;
     text-align: center;
 }
 .AdminRightebar{
     width:80%;
-    background-color: antiquewhite;
+    padding: 30px;
+    background-color: rgb(58, 104, 96);
 }
+
 
 .line {
   position: relative;
@@ -18,6 +20,11 @@
   border: none;
   width: 100%;
   height: 1px;
-  background: rgb(155, 152, 152);
+  background: rgb(172, 129, 129);
   margin-bottom: 30px;
+}
+
+.handlePoint:hover{
+  cursor: pointer;
+  background-color: rgb(231, 55, 164);
 }

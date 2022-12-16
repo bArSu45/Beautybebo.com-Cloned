@@ -1,33 +1,63 @@
 import { Flex, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Admin.module.css";
+import Dashboard from "./Dashboard";
+import Products from "./Products";
+import User from "./User";
 
 export default function Admin() {
+  const [page, setPage] = useState("dashboard");
+
+  const handleClick = (data) => {
+    setPage(data);
+  }
+
+  // const handleClick2 = (e) => {
+  //   e.preventDefault()
+  //   setPage("user")
+  // }
+
+  //  const handleClick3 = (e) => {
+  //    e.preventDefault();
+  //    setPage("user");
+  //  };
+
     return (
       <div>
         <Flex>
           <div className={styles.AdminSidebar}>
             <Heading mb="24px">Admin </Heading>
-            <div>
+            <div
+              className={styles.handlePoint}
+              onClick={() => handleClick("dashboard")}
+            >
               <Heading mt="35%" mb="15px" fontSize="20px">
                 Dashboard
               </Heading>
               <hr className={styles.line} />
             </div>
-            <div>
-              <Heading mb="18px"  fontSize="20px">
+            <div
+              onClick={() => handleClick("user")}
+              className={styles.handlePoint}
+            >
+              <Heading mb="18px" fontSize="20px">
                 Users
               </Heading>
               <hr className={styles.line} />
             </div>
-            <div>
-              <Heading mb="18px"  fontSize="20px">
+            <div
+              className={styles.handlePoint}
+              onClick={() => handleClick("product")}
+            >
+              <Heading mb="18px" fontSize="20px">
                 Products
               </Heading>
               <hr className={styles.line} />
             </div>
           </div>
-          <div className={styles.AdminRightebar}></div>
+          <div className={styles.AdminRightebar}>
+          {page==="dashboard" ? <Dashboard/> : <div>{page==="product" ? <Products/> : <div> {page==="user" ? <User/>:<Dashboard/> } </div> } </div>}
+          </div>
         </Flex>
       </div>
     );
