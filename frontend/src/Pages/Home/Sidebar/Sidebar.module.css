@@ -5,9 +5,9 @@
 
 #sidebar {
     /* display: flex; */
-    position: fixed;
+    /* position: fixed; */
     z-index: 1;
-    width: 18%;
+    width: 90%;
     /* border: 1px solid red; */
 }
 
