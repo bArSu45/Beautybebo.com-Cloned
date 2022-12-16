@@ -14,6 +14,7 @@
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "framer-motion": "^7.6.19",
+    "mdb-react-ui-kit": "^5.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
