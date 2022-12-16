@@ -17,3 +17,19 @@
 9. GET USER BY ID ( GET ) = https://average-jersey-bat.cyclic.app/users/${id}
 
 10. DELETE USER ( DELETE ) = https://average-jersey-bat.cyclic.app/users/${id}
+
+11. ADD TO CART ( POST ) = https://average-jersey-bat.cyclic.app/carts
+
+12. UPADTE FROM CART ( POST ) = https://average-jersey-bat.cyclic.app/carts/${id}
+
+13. DELETE FROM CART ( DELETE ) = https://average-jersey-bat.cyclic.app/carts/${id}
+
+14. GET CART BY USERID ( GET ) = https://average-jersey-bat.cyclic.app/carts/find/${userId}
+
+15. CREATE ORDER ( POST ) = https://average-jersey-bat.cyclic.app/orders
+
+16. GET USERS ORDER ( GET ) = https://average-jersey-bat.cyclic.app/orders/find/${userId}
+
+17. GET ALL ORDERS ( GET ) = https://average-jersey-bat.cyclic.app/orders
+
+18. DELETE A ORDER ( DELETE ) =  https://average-jersey-bat.cyclic.app/orders/${id}
