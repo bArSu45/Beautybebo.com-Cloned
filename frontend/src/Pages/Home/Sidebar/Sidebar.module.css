@@ -4,10 +4,8 @@
 }
 
 #sidebar {
-    /* display: flex; */
-    position: fixed;
     z-index: 1;
-    width: 18%;
+    width: 90%;
     /* border: 1px solid red; */
 }
 
@@ -36,7 +34,3 @@
 .whole_inside_div>div>img {
     margin-left: 20px
 }
-
-/* .whole_inside_div>div>p:hover {
-    color: rgb(243, 21, 176);
-} */
