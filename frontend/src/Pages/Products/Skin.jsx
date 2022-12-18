@@ -5,7 +5,7 @@ import { FaShoppingBasket } from "react-icons/fa"
 import { HiHeart } from "react-icons/hi"
 import { GoStar } from "react-icons/go"
 import style from "./Products.module.css"
-export default function Products() {
+export default function Skin() {
     const [makeup, setmakeup] = useState([])
 
     const makeupData = () => {

@@ -5,11 +5,11 @@ import { FaShoppingBasket } from "react-icons/fa"
 import { HiHeart } from "react-icons/hi"
 import { GoStar } from "react-icons/go"
 import style from "./Products.module.css"
-export default function Products() {
+export default function Hair() {
     const [makeup, setmakeup] = useState([])
 
     const makeupData = () => {
-        axios.get(`https://repulsive-nightgown-colt.cyclic.app/products?category=skin`)
+        axios.get(`https://repulsive-nightgown-colt.cyclic.app/products?category=hair`)
           .then((res) => {
             setmakeup(res.data)
     

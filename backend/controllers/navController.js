@@ -41,3 +41,4 @@ const getNavProductsById = async (req, res) => {
 };
 
 module.exports = { addNavbarItem, getNavbarProducts, getNavProductsById };
+module.exports = { addNavbarItem, getNavbarProducts };
