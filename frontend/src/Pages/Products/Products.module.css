@@ -2,14 +2,13 @@
     width: 100%;
     border: 1px solid rgb(207, 203, 203);
     padding: 10px 10px 10px 10px;
-    
 }
 #makeup_main_container{
-    width: 80%;
+    width: 85%;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 20px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
 }
 /* #makeup_img_div{
     border: 2px solid pink;
@@ -39,7 +38,7 @@
 }
 #main_add_cart_div{
     display: flex;
-    width: 50%;
+    width: 60%;
     color: grey;
     /* border: 2px solid yellowgreen; */
     justify-content: space-between;
@@ -55,25 +54,22 @@
     width: 22%;
     border-radius: 7px;
 }
-#price_div{
+#price_pink_div{
     color: #DD2085;
     font-size: 18px;
     font-weight: 700;
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
-@media screen and (max-width:1180px) and (min-width:560px){
+
+@media screen and (max-width:1180px) and (min-width:769px){
     #makeup_main_container{
-        width: 80%;
-        margin: auto;
-        display: grid;
         grid-template-columns: repeat(2,1fr);
         gap: 20px;
     }
 }
-@media screen and (max-width:558px) and (min-width:320px){
+
+@media screen and (max-width:768px) and (min-width:320px){
     #makeup_main_container{
         grid-template-columns: repeat(1,1fr);
     }
