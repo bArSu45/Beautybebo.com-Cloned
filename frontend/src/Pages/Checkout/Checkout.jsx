@@ -1,32 +1,52 @@
 import { Heading, Text, Box, Flex, Radio } from "@chakra-ui/react";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputComponent from "../../Components/InputComponent";
 import styles from "./Checkout.module.css";
 import { initialState, InputArray, inputs } from "../../Utils/localData";
 import ButtonComponent from "../../Components/ButtonComponent";
 import { useLocation, useNavigate } from "react-router-dom";
 import Confirm from "./Confirm";
+import { useDispatch, useSelector } from "react-redux";
+import { CARD_DELETE_ALL } from "../../Redux/CartReducer/CartAction";
+import Loading from "../../Components/CartProductCard/Loading";
+import Success from "../../Components/Success";
 
 export default function Checkout() {
   const [data, setData] = useState(initialState);
+  const { loading2, auth2 } = useSelector((store) => store.CartUpdateReducer);
+  const [con, setCon] = useState(false);
   const Navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
   console.log(location);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
-
-  const handlePaymentLink = (e) => {
-    e.preventDefault();
-    Navigate("/payment", {
-      state: { total_price: location.state.total_price },
-    });
+  
+  const handleDeleteMany = async(e) => {
+    await dispatch(CARD_DELETE_ALL());
+    window.alert("Product Orderded Successfully")
+    Navigate("/");
   }
+
+  
+
+  // const handlePaymentLink = (e) => {
+  //   e.preventDefault();
+  //   Navigate("/payment", {
+  //     state: { total_price: location.state.total_price },
+  //   });
+  // }
+
+  useEffect(() => {
+    
+  },[auth2])
 
   return (
     <div className={styles.Checkout}>
+      {loading2 ? <Loading /> :
       <div>
         <Heading mt="15px" fontSize="25px">
           Shipping Address
@@ -67,11 +87,14 @@ export default function Checkout() {
               Max 7 Business days
             </Text>
           </Flex>
-
           
-          <Confirm  amount={location.state.total_price} />
+         { loading2 ? <Loading/> : 
+          <Confirm
+            handleDeleteMany={handleDeleteMany}
+            amount={location.state.total_price}
+          />}
         </Flex>
-      </div>
+      </div> }
     </div>
   );
 }

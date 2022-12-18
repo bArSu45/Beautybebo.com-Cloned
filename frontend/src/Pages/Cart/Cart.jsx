@@ -14,7 +14,7 @@ import {
 import styles from "./Cart.module.css";
 
 function simulateNetworkRequest() {
-  return new Promise((resolve) => setTimeout(resolve, 1000));
+  return new Promise((resolve) => setTimeout(resolve, 2200));
 }
 
 function Cart() {
@@ -27,25 +27,27 @@ function Cart() {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = (id) => {
+    setData({ ...data, render: true });
     dispatch(EDIT_CARD_DELETE(id)).then(() => getCard_data());
-    simulateNetworkRequest().then(()=>setData({...data,render:true}))
+
+    // simulateNetworkRequest().then(() => setData({ ...data, render: true }));
   };
 
   const UpdateCart = () => {
-    getCard_data()
     simulateNetworkRequest().then(() => setData({ ...data, render: true }));
-  }
+    getCard_data();
+  };
 
   const getCard_data = () => {
     dispatch(GET_CARD_DATA());
     const total_val = Cart_Items.reduce((sum, a) => {
-      return sum + a.price * a.qty;
+      return sum + a.price * a.quantity;
     }, 0);
-    setData({ ...data, CardItem: Cart_Items, total: total_val, render: false});
+    setData({ ...data, CardItem: Cart_Items, total: total_val, render: false });
   };
 
   const handleCheckout = () => {
-    Navigate("/checkout", { state: { total_price: data.total} });
+    Navigate("/checkout", { state: { total_price: data.total } });
   };
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function Cart() {
       <Box>
         <Heading fontSize="25px">SHOPPING CART </Heading>
       </Box>
-      {loading || data.render ? (
+      {loading || data.render || loading2 ? (
         <div className={styles.Loading}>
           <Loading />
         </div>
@@ -92,38 +94,39 @@ function Cart() {
                 <hr className={styles.line} />
                 <div>
                   {data.CardItem.map((card) => (
-                    <>
+                    <div key={card._id}>
                       <ProductCard
                         image={card.image}
-                        desc={card.desc}
+                        desc={card.name}
                         price={card.price}
-                        qty={card.qty}
-                        id={card.id}
-                        handleDelete={() => handleDelete(card.id)}
+                        qty={card.quantity}
+                        id={card._id}
+                        handleDelete={() => handleDelete(card._id)}
                         getCard_data={UpdateCart}
                       />
                       <div className={styles.EditComponent}></div>
                       <hr className={styles.line} />
-                    </>
+                    </div>
                   ))}
                   <div>
                     <hr className={styles.line2} />
-                        <Flex justifyContent="space-between">
-                          <Link to="/" >   <ButtonComponent
-                        Title={"CONTINUE SHOPPING"}
-                        txtColor={"white"}
-                        bgColor={"grey"}
-                            buttonColor={"pink"}
-                    
-                      /> </Link>
-                    
+                    <Flex justifyContent="space-between" p="15px" >
+                      <Link to="/">
+                        {" "}
+                        <ButtonComponent
+                          Title={"CONTINUE SHOPPING"}
+                          txtColor={"white"}
+                          bgColor={"grey"}
+                          buttonColor={"pink"}
+                        />{" "}
+                      </Link>
 
                       <ButtonComponent
                         Title={"UPDATE SHOPPING CART"}
                         txtColor={"white"}
                         bgColor={"grey"}
-                            buttonColor={"pink"}
-                            handleClick={UpdateCart}
+                        buttonColor={"pink"}
+                        handleClick={UpdateCart}
                       />
                     </Flex>{" "}
                   </div>
@@ -190,4 +193,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default memo(Cart);

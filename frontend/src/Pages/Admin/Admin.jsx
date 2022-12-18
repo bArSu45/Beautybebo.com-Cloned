@@ -1,5 +1,7 @@
 import { Flex, Heading } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { get_users } from "../../Redux/AdminReducer/AdminAction";
 import styles from "./Admin.module.css";
 import Dashboard from "./Dashboard";
 import Products from "./Products";
@@ -7,7 +9,7 @@ import User from "./User";
 
 export default function Admin() {
   const [page, setPage] = useState("dashboard");
-
+// const { users, user_auth } = useSelector((store) => store.AdminUserReducer);
   const handleClick = (data) => {
     setPage(data);
   }
@@ -17,11 +19,17 @@ export default function Admin() {
   //   setPage("user")
   // }
 
+  useEffect(() => {
+ 
+},[])
+
+
   //  const handleClick3 = (e) => {
   //    e.preventDefault();
   //    setPage("user");
   //  };
-
+  
+  
     return (
       <div>
         <Flex>
@@ -56,7 +64,7 @@ export default function Admin() {
             </div>
           </div>
           <div className={styles.AdminRightebar}>
-          {page==="dashboard" ? <Dashboard/> : <div>{page==="product" ? <Products/> : <div> {page==="user" ? <User/>:<Dashboard/> } </div> } </div>}
+          {page==="dashboard" ? <Dashboard/> : <div>{page==="product" ? <Products/> : <div> {page==="user" ? <User  />:<Dashboard/> } </div> } </div>}
           </div>
         </Flex>
       </div>

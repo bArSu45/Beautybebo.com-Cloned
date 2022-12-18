@@ -4,7 +4,6 @@
     border: 1px solid grey;
     background-color: rgb(65, 62, 62);
     color: white;
-    height:80vh;
     text-align: center;
 }
 .AdminRightebar{
@@ -13,7 +12,13 @@
     background-color: rgb(58, 104, 96);
 }
 
+.userContainer{
+  display: flex;
+  gap:15px;
+  justify-content: center;
+  flex-wrap: wrap;
 
+}
 .line {
   position: relative;
   top: 0px;

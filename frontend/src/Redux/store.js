@@ -3,6 +3,7 @@ import { reducer as AppReducer } from './AppReducer/reducer'
 import { reducer as AuthReducer } from './AuthReducer/reducer';
 import thunk from 'redux-thunk'
 import { CartReducer, CartUpdateReducer } from "./CartReducer/CartReducer";
+import { AdminReducer, AdminProductReducer } from "./AdminReducer/AdminReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
@@ -10,6 +11,8 @@ const rootReducer = combineReducers({
   AuthReducer,
   CartReducer,
   CartUpdateReducer,
+  AdminReducer,
+  AdminProductReducer,
 });
 
 export const store = legacy_createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
