@@ -7,13 +7,19 @@ import Home from '../Pages/Home/Home'
 import Payment from '../Pages/Payments/Payment'
 import Products from '../Pages/Products/Products'
 import SingleProduct from '../Pages/SingleProduct/SingleProduct'
+import PrivateRoutes from './PrivateRoutes'
 
 export default function AllRoutes() {
     return (
         <div>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/cart' element={<Cart />} />
+                <Route path='/cart' element={
+                    <PrivateRoutes>
+                        <Cart />
+
+                    </PrivateRoutes>
+                } />
                 <Route path='/checkout' element={<Checkout />} />
                 <Route path='/payment' element={<Payment />} />
                 <Route path='/products' element={<Products />} />
