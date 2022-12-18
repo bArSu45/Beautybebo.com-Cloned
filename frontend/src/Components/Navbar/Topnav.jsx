@@ -12,8 +12,19 @@ import {
 import { FaBeer, ImHeart } from "react-icons/im";
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import Navinput from "./Navinput";
+import { useNavigate } from "react-router-dom";
 
 const Topnav = () => {
+const isAdmin=JSON.parse(localStorage.getItem("isAdmin")) || false
+const navigate=useNavigate()
+
+  const handleAdmin=()=>{
+if(isAdmin){
+  navigate("/admin")
+}else{
+  window.alert("You are not Authorised")
+}
+  }
   return (
     <div className={styles.top}>
       <div className={styles.imagediv}>
@@ -26,8 +37,10 @@ const Topnav = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-
+          
+          
         }}
+        className={styles.mediaaccount}
       >
         <div className={styles.icon} style={{border : "1px solid black"}}>
           <ImHeart size={20} />
@@ -43,6 +56,7 @@ const Topnav = () => {
                 {/* MenuItems are not rendered unless Menu is open */}
                 <MenuItem>Login</MenuItem>
                 <MenuItem>Register</MenuItem>
+                <MenuItem onClick={handleAdmin}>Admin</MenuItem>
               </MenuList>
             </Menu>
           </div>

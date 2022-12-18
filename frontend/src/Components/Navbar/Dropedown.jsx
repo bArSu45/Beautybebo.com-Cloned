@@ -9,15 +9,29 @@ import {
   Grid,
   GridItem,
   Spacer,
+  useDisclosure,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerBody,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Menu
 } from "@chakra-ui/react";
+import { FaBeer, FaCartArrowDown } from 'react-icons/fa'
 
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./midnav.module.css";
+import { ImMenu } from "react-icons/im";
 const MenSubNav = () => {
-  const { pathname } = useLocation();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  
 
   return (
+    <div>
     <Box w="100%" h={"50px"} bgColor={"#dd0285"} className={styles.nav}>
       <Box className={styles.wrapper}>
         <ul className={styles.navLink}>
@@ -47,40 +61,40 @@ const MenSubNav = () => {
                       <a href="#">BB Cream</a>
                     </li>
                     <li>
-                      <Link to={"/"}>Blush</Link>
+                      <Link to={"/products"}>Blush</Link>
                     </li>
                     <li>
                       <Link>Bronzers</Link>
                     </li>
                     <li>
-                      <a href="#">CC Cream</a>
+                      <a href="/products">CC Cream</a>
                     </li>
                     <li>
-                      <a href="#">Countour</a>
+                      <a href="/products">Countour</a>
                     </li>
                     <li>
-                      <a href="#">Concealer</a>
+                      <a href="/products">Concealer</a>
                     </li>
                     <li>
-                      <a href="#">Compact</a>
+                      <a href="/products">Compact</a>
                     </li>
                     <li>
-                      <a href="#">Face Primer</a>
+                      <a href="/products">Face Primer</a>
                     </li>
                     <li>
-                      <a href="#">Foundation</a>
+                      <a href="/products">Foundation</a>
                     </li>
                     <li>
-                      <a href="#">Highlighters</a>
+                      <a href="/products">Highlighters</a>
                     </li>
                     <li>
-                      <a href="#">Loose Powder</a>
+                      <a href="/products">Loose Powder</a>
                     </li>
                     <li>
-                      <a href="#">Makeup Kits</a>
+                      <a href="/products">Makeup Kits</a>
                     </li>
                     <li>
-                      <a href="#">Makeup</a>
+                      <a href="/products">Makeup</a>
                     </li>
                   </ul>
                 </div>
@@ -825,9 +839,138 @@ const MenSubNav = () => {
             </div>
           </li>
         </ul>
+        <ul className={styles.navLink} >
+        <Flex
+              color={"white"}
+              _hover={{ bgColor: "white", color: "black" }}
+              alignItems={"center"}
+              w="120px"
+              justifyContent={"center"}
+              h="49px"
+            >
+              <Link className={styles.Link} to="/">
+                <Text className={styles.text}>STORE</Text>
+                <div style={{position: "relative"}}>
+                <FaCartArrowDown />
+
+
+                </div>
+              </Link>
+            </Flex>
+
+        </ul>
       </Box>
     </Box>
-  );
+   
+    <Box w="100%" h={"50px"} bgColor={"#dd0285"} className={styles.navtwo}>
+      <Box className={styles.wrapper} >
+        <ul className={styles.navLink}>
+        <Button colorScheme='light' onClick={onOpen}>
+        <ImMenu/>
+      </Button>
+      <Drawer placement="left" onClose={onClose} isOpen={isOpen} >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerHeader borderBottomWidth='1px'>CATEGORIES</DrawerHeader>
+          <DrawerBody>
+           <div>
+           <Menu>
+  <MenuButton  rightIcon={<ChevronDownIcon />}>
+    MAKEUP
+  </MenuButton>
+  <MenuList >
+    <MenuItem>Face</MenuItem>
+    <MenuItem>Eyes</MenuItem>
+    <MenuItem>Nails</MenuItem>
+    <MenuItem>Toothbrush</MenuItem>
+    
+  </MenuList>
+</Menu>
+           </div>
+           <div>
+           <Menu>
+  <MenuButton  rightIcon={<ChevronDownIcon />}>
+    HAIR
+  </MenuButton>
+  <MenuList >
+    <MenuItem>Hair care</MenuItem>
+    <MenuItem>Hair Loss</MenuItem>
+    
+    
+  </MenuList>
+</Menu>
+           </div>
+           <div>
+           <Menu>
+  <MenuButton  rightIcon={<ChevronDownIcon />}>
+    SKIN
+  </MenuButton>
+  <MenuList >
+    <MenuItem>Eye Care</MenuItem>
+    <MenuItem>Face Care</MenuItem>
+    <MenuItem>Body Care</MenuItem>
+    
+    
+  </MenuList>
+</Menu>
+           </div>
+           <div>
+           <Menu>
+  <MenuButton  rightIcon={<ChevronDownIcon />}>
+    PERSONAL CARE
+  </MenuButton>
+  <MenuList >
+    <MenuItem>Bath and Body</MenuItem>
+    <MenuItem>Bath and Accessories</MenuItem>
+    <MenuItem>BAth and Shower</MenuItem>
+    
+    
+  </MenuList>
+</Menu>
+           </div>
+           <div>
+           <Menu>
+  <MenuButton  rightIcon={<ChevronDownIcon />}>
+   BABY AND MOM CARE
+  </MenuButton>
+  <MenuList >
+    <MenuItem>Bath and Body</MenuItem>
+    <MenuItem>Bath and Accessories</MenuItem>
+    <MenuItem>BAth and Shower</MenuItem>
+    
+    
+  </MenuList>
+</Menu>
+           </div>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+        </ul>
+        <ul className={styles.navLink} >
+        <Flex
+              color={"white"}
+              _hover={{ bgColor: "white", color: "black" }}
+              alignItems={"center"}
+              w="120px"
+              justifyContent={"center"}
+              h="49px"
+            >
+              <Link className={styles.Link} to="/cart">
+                <Text className={styles.text}>STORE</Text>
+                <div style={{position: "relative"}}>
+                <FaCartArrowDown />
+
+
+                </div>
+              </Link>
+            </Flex>
+
+        </ul>
+      </Box>
+    </Box>
+
+    </div>
+  );   
 };
 
 export default MenSubNav;

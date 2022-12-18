@@ -17,23 +17,25 @@
       font-weight: bold;
     
     }
-    .nav .wrapper {
+     .wrapper {
       position: relative;
       width: 95%;
       /* padding: 0 30px; */
       display: flex;
+      justify-content: space-between;
       
       align-items: center;
       height: 100%;
       margin:  auto;
-      /* border: 2px solid red */
+     
+    
       
      
       /* align-items: center; */
     }
     .wrapper .navLink {
       display: inline-flex;
-      /* border: 1px solid blue; */
+     
 
       gap: 10px;
       
@@ -240,4 +242,33 @@
     .Link:hover{
       color: black;
       
+    }
+    .navtwo{
+     
+    
+   
+        width: 100%;
+        z-index: 999;
+        display: flex;
+       
+        margin-bottom: 1rem;
+        display: none
+       
+       
+       
+       
+        
+  
+        /* line-height: 65px; */
+      
+    }
+  
+
+    @media screen and (max-width:950px) and (min-width:200px) {
+      .nav{
+        display: none;
+       }
+       .navtwo{
+        display: block;
+       }
     }
