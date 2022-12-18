@@ -3,7 +3,10 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/users");
 const productRoute = require("./routes/products");
+const cartRoutes = require("./routes/carts");
+const orderRoute = require("./routes/orders");
 const dotenv = require("dotenv");
+const navbarRoutes = require("./routes/navbar");
 dotenv.config();
 
 const app = express();
@@ -34,6 +37,9 @@ app.get("/", (req, res) => {
 /* ROUTES */
 app.use("/users", userRoutes);
 app.use("/products", productRoute);
+app.use("/carts", cartRoutes);
+app.use("/orders", orderRoute);
+app.use("/navbars", navbarRoutes);
 
 /* LISTENING */
 app.listen(PORT, () => {

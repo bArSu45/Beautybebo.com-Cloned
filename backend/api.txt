@@ -1,35 +1,37 @@
-1. SIGNUP ( POST ) = https://average-jersey-bat.cyclic.app/users/signup
+1. SIGNUP ( POST ) = https://repulsive-nightgown-colt.cyclic.app/users/signup
 
-2. LOGIN ( POST ) = https://average-jersey-bat.cyclic.app/users/login
+2. LOGIN ( POST ) = https://repulsive-nightgown-colt.cyclic.app/users/login
 
-3. ADD PRODUCT ( POST ) = https://average-jersey-bat.cyclic.app/products
+3. ADD PRODUCT ( POST ) = https://repulsive-nightgown-colt.cyclic.app/products
 
-4. GET PRODUCTS ( GET ) = https://average-jersey-bat.cyclic.app/products
+4. GET PRODUCTS ( GET ) = https://repulsive-nightgown-colt.cyclic.app/products
 
-5. GET PRODUCT BY ID ( GET ) = https://average-jersey-bat.cyclic.app/products/${id}
+5. GET PRODUCT BY ID ( GET ) = https://repulsive-nightgown-colt.cyclic.app/products/${id}
 
-6. UPDATE PRODUCT ( PUT ) = https://average-jersey-bat.cyclic.app/products/${id}
+6. UPDATE PRODUCT ( PUT ) = https://repulsive-nightgown-colt.cyclic.app/products/${id}
 
-7. DELETE PRODUCT ( DELETE ) = https://average-jersey-bat.cyclic.app/products/${id}
+7. DELETE PRODUCT ( DELETE ) = https://repulsive-nightgown-colt.cyclic.app/products/${id}
 
-8. GET ALL USERS ( GET ) = https://average-jersey-bat.cyclic.app/users
+8. GET ALL USERS ( GET ) = https://repulsive-nightgown-colt.cyclic.app/users
 
-9. GET USER BY ID ( GET ) = https://average-jersey-bat.cyclic.app/users/${id}
+9. GET USER BY ID ( GET ) = https://repulsive-nightgown-colt.cyclic.app/users/${id}
 
-10. DELETE USER ( DELETE ) = https://average-jersey-bat.cyclic.app/users/${id}
+10. DELETE USER ( DELETE ) = https://repulsive-nightgown-colt.cyclic.app/users/${id}
 
-11. ADD TO CART ( POST ) = https://average-jersey-bat.cyclic.app/carts
+11. ADD TO CART ( POST ) = https://repulsive-nightgown-colt.cyclic.app/carts
 
-12. UPADTE FROM CART ( POST ) = https://average-jersey-bat.cyclic.app/carts/${id}
+12. UPADTE FROM CART ( POST ) = https://repulsive-nightgown-colt.cyclic.app/carts/${id}
 
-13. DELETE FROM CART ( DELETE ) = https://average-jersey-bat.cyclic.app/carts/${id}
+13. DELETE FROM CART ( DELETE ) = https://repulsive-nightgown-colt.cyclic.app/carts/${id}
 
-14. GET CART BY USERID ( GET ) = https://average-jersey-bat.cyclic.app/carts/find/${userId}
+14. GET CART BY USERID ( GET ) = https://repulsive-nightgown-colt.cyclic.app/carts/find/${userId}
 
-15. CREATE ORDER ( POST ) = https://average-jersey-bat.cyclic.app/orders
+15. CREATE ORDER ( POST ) = https://repulsive-nightgown-colt.cyclic.app/orders
 
-16. GET USERS ORDER ( GET ) = https://average-jersey-bat.cyclic.app/orders/find/${userId}
+16. GET USERS ORDER ( GET ) = https://repulsive-nightgown-colt.cyclic.app/orders/find/${userId}
 
-17. GET ALL ORDERS ( GET ) = https://average-jersey-bat.cyclic.app/orders
+17. GET ALL ORDERS ( GET ) = https://repulsive-nightgown-colt.cyclic.app/orders
 
-18. DELETE A ORDER ( DELETE ) =  https://average-jersey-bat.cyclic.app/orders/${id}
+18. DELETE A ORDER ( DELETE ) =  https://repulsive-nightgown-colt.cyclic.app/orders/${id}
+
+19. NAVBAR SEARCH DATA ( GET ) = https://repulsive-nightgown-colt.cyclic.app/navbars
