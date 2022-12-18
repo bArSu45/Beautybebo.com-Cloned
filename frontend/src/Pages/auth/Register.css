@@ -1,0 +1,275 @@
+/* For Large screen */
+@media only screen and (min-width: 1008px) {
+  .register_page {
+    width: 100%;
+    background-color: #f2f2f2;
+    margin-top: 170px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .register_auth {
+    width: 50%;
+    height: 100%;
+    margin: auto;
+    background-color: #ffffff;
+    padding-bottom: 40px;
+  }
+
+  .signup_fb_google {
+    width: 90%;
+    margin: auto;
+    padding-top: 25px;
+  }
+
+  .about_you {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    color: #333333;
+  }
+
+  .sign_up_with {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #333333;
+  }
+
+  .facebook_google {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .facebook {
+    width: 48.5%;
+    height: 48px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .facebook_name {
+    margin-left: 5px;
+    color: #666666;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .google {
+    width: 48.5%;
+    height: 48px;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .google_name {
+    margin-left: 5px;
+    color: #666666;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .signup_form {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .create_email_text {
+    font-size: 14px;
+  }
+}
+
+/* For medium screen */
+@media only screen and ((min-width: 641px) and (max-width:1007px)) {
+  .register_page {
+    width: 100%;
+    background-color: #f2f2f2;
+    margin-top: 170px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .register_auth {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    background-color: #ffffff;
+    padding-bottom: 40px;
+  }
+
+  .signup_fb_google {
+    width: 90%;
+    margin: auto;
+    padding-top: 25px;
+  }
+
+  .about_you {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    color: #333333;
+  }
+
+  .sign_up_with {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #333333;
+  }
+
+  .facebook_google {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .facebook {
+    width: 48.5%;
+    height: 100%;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .facebook_name {
+    margin-left: 5px;
+    color: #666666;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .google {
+    width: 48.5%;
+    height: 100%;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .google_name {
+    margin-left: 5px;
+    color: #666666;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .signup_form {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .create_email_text {
+    font-size: 14px;
+  }
+}
+
+/* For small screen */
+@media only screen and (max-width: 640px) {
+  .register_page {
+    width: 100%;
+    background-color: #f2f2f2;
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .register_auth {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background-color: #ffffff;
+    padding-bottom: 40px;
+  }
+
+  .signup_fb_google {
+    width: 90%;
+    margin: auto;
+    padding-top: 25px;
+  }
+
+  .about_you {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    color: #333333;
+  }
+
+  .sign_up_with {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #333333;
+  }
+
+  .facebook_google {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .facebook {
+    width: 48.5%;
+    height: 100%;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .facebook_name {
+    margin-left: 5px;
+    color: #666666;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .google {
+    width: 48.5%;
+    height: 100%;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .google_name {
+    margin-left: 5px;
+    color: #666666;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .signup_form {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .create_email_text {
+    font-size: 14px;
+  }
+}

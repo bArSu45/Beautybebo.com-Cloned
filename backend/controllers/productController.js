@@ -18,8 +18,10 @@ const addProduct = async (req, res) => {
 
 /* GET ALL THE PRODUCTS */
 const getProducts = async (req, res) => {
+  const category = req.query.category;
+  const regex = new RegExp(category, "i");
   try {
-    const products = await Product.find();
+    const products = await Product.find({ category: regex });
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json(error);
