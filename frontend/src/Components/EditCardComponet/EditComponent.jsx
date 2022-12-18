@@ -27,7 +27,7 @@ function EditComponent({
   const handleConfirm = async (e) => {
     e.preventDefault();
     setLoad(true);
-    const Value = { id: id, qty: data.Qty };
+    const Value = { id: id, quantity: data.Qty };
     dispatch(EDIT_CARD_DATA(Value));
     await simulateNetworkRequest().then((res) => setLoad(false));
     getCard_data();

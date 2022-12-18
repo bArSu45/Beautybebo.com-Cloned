@@ -2,33 +2,36 @@ import { Flex, Text } from "@chakra-ui/react";
 import React, { memo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Success from "../../Components/Success";
 
 const IntialState = {
   box1: false,
   box2: false,
 };
 
-function ConfirmModal({ amount }) {
+function ConfirmModal({ amount, handleDeleteMany }) {
   const [show, setShow] = useState(false);
   const [payment, setPayment] = useState(IntialState);
 
   const handlePaymentChange = (e) => {
     const { name, checked } = e.target;
-    
     setPayment({ ...payment, [name]: checked });
   };
 
-  const handlePaymentSubmit = (e) => {
+  const handlePaymentSubmit = async (e) => {
     e.preventDefault();
-    const { box1, box2 } = payment;
-    if (box1 === true && box2 === false) {
+    if (payment.box1 === true && payment.box2 === false) {
+      setPayment(IntialState);
+      handleDeleteMany();
       handleClose();
-      payment = IntialState;
-    } else if (box1 === false && box2 === true) {
+    } else if (payment.box1 === false && payment.box2 === true) {
+      setPayment(IntialState);
+      handleDeleteMany();
       handleClose();
-      payment = IntialState;
     }
   };
+
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,7 +41,6 @@ function ConfirmModal({ amount }) {
       <Button color="pink" variant="primary" onClick={handleShow}>
         Next
       </Button>
-
       <Modal
         show={show}
         onHide={handleClose}
@@ -74,7 +76,12 @@ function ConfirmModal({ amount }) {
             Close
           </Button>
           <Button onClick={handlePaymentSubmit} variant="primary">
-            Confirm
+            <Success
+              containt="Product ordered Succcessfully"
+              access={payment.box1}
+              btn="Confirm"
+              handleClose={handleClose}
+            />
           </Button>
         </Modal.Footer>
       </Modal>

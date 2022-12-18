@@ -1,8 +1,55 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Loading from "../../Components/CartProductCard/Loading";
+import { GetLocal } from "../../Utils/localstorage";
 export default function Dashboard() {
+
+  const [data, setData] = useState(0);
+  const [user, setUser] = useState(0);
+  const [product, setProduct] = useState(0);
+  const [auth, setAuth] = useState(true);
+  const Token = GetLocal("auth");
+  const get_data = async () => {
+    
+    await axios
+      .get("https://pleasant-foal-cloak.cyclic.app/users/count", {
+        headers: {
+          token: `Bearer ${Token}`,
+        },
+      })
+      .then((res) => setUser(res.data))
+      .catch((err) => window.alert("Something Went wrong"));
+
+
+    await axios
+      .get("https://pleasant-foal-cloak.cyclic.app/products/count", {
+        headers: {
+          token: `Bearer ${Token}`,
+        },
+      })
+      .then((res) => setData(res.data))
+      .catch((err) => window.alert("Something Went wrong"));
+    
+    
+    await axios
+      .get("https://pleasant-foal-cloak.cyclic.app/products/count", {
+        headers: {
+          token: `Bearer ${Token}`,
+        },
+      })
+      .then((res) => setProduct(res.data))
+      .catch((err) => window.alert("Something Went wrong"));
+    
+    setAuth(false);
+  }
+  useEffect(() => {
+  get_data()
+},[auth])
+
   return (
     <div>
+      {auth ? <Loading/> :  
       <Flex justifyContent="space-around" flexWrap="wrap">
         <Box
           w="20%"
@@ -14,7 +61,7 @@ export default function Dashboard() {
             {" "}
             <Image src="/user_logo.png" />{" "}
           </Flex>
-          <Text mt="15px">100 Users Active</Text>
+          <Text mt="15px">{user} Users Active</Text>
         </Box>
         <Box
           w="20%"
@@ -25,7 +72,7 @@ export default function Dashboard() {
           <Flex justifyContent="center">
             <Image src="/product_logo.png" />
           </Flex>
-          <Text mt="15px">200 Total Products</Text>
+          <Text mt="15px">{data} Total Products</Text>
         </Box>
         <Box
           w="20%"
@@ -38,7 +85,7 @@ export default function Dashboard() {
             <Image src="/product_logo.png" />{" "}
           </Flex>
           <Text color="green" mt="15px">
-            100 Products In Our Stock
+            {product} Products In Our Stock
           </Text>
         </Box>
         <Box
@@ -52,10 +99,10 @@ export default function Dashboard() {
             <Image src="/product_logo.png" />{" "}
           </Flex>
           <Text color="red" mt="15px">
-            100 Products Out of Stock
+              { data-product} Products Out of Stock
           </Text>
         </Box>
-      </Flex>
+      </Flex>}
     </div>
   );
 }
