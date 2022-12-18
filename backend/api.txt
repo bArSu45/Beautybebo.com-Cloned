@@ -4,7 +4,10 @@
 
 3. ADD PRODUCT ( POST ) = https://repulsive-nightgown-colt.cyclic.app/products
 
-4. GET PRODUCTS ( GET ) = https://repulsive-nightgown-colt.cyclic.app/products
+4. GET PRODUCTS ( GET ) = https://repulsive-nightgown-colt.cyclic.app/products?category={category name}
+  
+   Category are skin, makeup, health, personal, babycare, fragmence and ayurveda
+
 
 5. GET PRODUCT BY ID ( GET ) = https://repulsive-nightgown-colt.cyclic.app/products/${id}
 
