@@ -848,7 +848,7 @@ const MenSubNav = () => {
               justifyContent={"center"}
               h="49px"
             >
-              <Link className={styles.Link} to="/">
+              <Link className={styles.Link} to="/cart">
                 <Text className={styles.text}>STORE</Text>
                 <div style={{position: "relative"}}>
                 <FaCartArrowDown />

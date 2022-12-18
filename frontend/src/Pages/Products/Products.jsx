@@ -5,9 +5,11 @@ import { FaShoppingBasket } from "react-icons/fa"
 import { HiHeart } from "react-icons/hi"
 import { GoStar } from "react-icons/go"
 import style from "./Products.module.css"
+import { useDispatch } from 'react-redux'
+import { ADD_CARD_DATA } from '../../Redux/CartReducer/CartAction'
 export default function Products() {
     const [makeup, setmakeup] = useState([])
-
+  const dispatch = useDispatch();
     const makeupData = () => {
         axios.get(`https://repulsive-nightgown-colt.cyclic.app/products?category=skin`)
           .then((res) => {
@@ -16,7 +18,18 @@ export default function Products() {
           }).catch((e) => {
             console.log(e)
           })
-      }
+  }
+  
+  const handleCartClick = (image,price,name) => {
+    const data = {
+      image,
+      price,
+      name
+    }
+    
+dispatch(ADD_CARD_DATA(data)).then((res)=>window.alert("Product added Successfully"))
+    
+  }
 
       useEffect(() => {
         makeupData()
@@ -29,28 +42,37 @@ export default function Products() {
     <div id={style.makeup_main_container}>
         {makeup.length > 0 && makeup.map((item) => {
             return (
-        <div id={style.makeup_main_div}>
-            <div id={style.makeup_img_div}><img src={item.image} alt="" /></div>
-            <div id={style.makeup_name_div}><p>{item.name}</p></div>
-            <div id={style.go_star_div}> 
-                <GoStar />
-                <GoStar />
-                <GoStar />
-                <GoStar />
-                <GoStar />
-             </div>
-            <div id={style.price_pink_div}><h4>{"₹ " + item.price}</h4></div>
-            <div id={style.main_add_cart_div}>
-                <div id={style.add_to_cart_div}>
-                <FaShoppingBasket />
+              <div id={style.makeup_main_div}>
+                <div id={style.makeup_img_div}>
+                  <img src={item.image} alt="" />
+                </div>
+                <div id={style.makeup_name_div}>
+                  <p>{item.name}</p>
+                </div>
+                <div id={style.go_star_div}>
+                  <GoStar />
+                  <GoStar />
+                  <GoStar />
+                  <GoStar />
+                  <GoStar />
+                </div>
+                <div id={style.price_pink_div}>
+                  <h4>{"₹ " + item.price}</h4>
+                </div>
+                <div id={style.main_add_cart_div}>
+                  <div
+                    id={style.add_to_cart_div}
+                    onClick={() => handleCartClick(item.image,item.price,item.name)}
+                  >
+                    <FaShoppingBasket />
                     <p>Add To Cart</p>
+                  </div>
+                  <div id={style.hrt_div}>
+                    <HiHeart color="white" />
+                  </div>
                 </div>
-                <div id={style.hrt_div}>
-<HiHeart color='white'/>
-                </div>
-            </div>
-        </div>
-            )
+              </div>
+            );
         })}
     </div>
     </div>

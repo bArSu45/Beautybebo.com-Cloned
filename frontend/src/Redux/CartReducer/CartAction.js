@@ -51,7 +51,7 @@ export const GET_CARD_DATA = () => (dispatch) => {
 export const ADD_CARD_DATA = (data) => (dispatch) => {
    dispatch(cartUpdate_Req());
   return axios
-    .post("https://pleasant-foal-cloak.cyclic.app/carts", data, {
+    .post("https://pleasant-foal-cloak.cyclic.app/carts/add", data, {
       headers: {
         token: `Bearer ${Token}`,
       },

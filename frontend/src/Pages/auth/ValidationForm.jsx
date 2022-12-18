@@ -2,6 +2,7 @@ import "./ValidationForm.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import Loading from "../../Components/CartProductCard/Loading";
 
 const initialState = {
   firstName: "",
@@ -13,6 +14,7 @@ const initialState = {
 
 const ValidationForm = () => {
   const [fields, setFields] = useState(initialState);
+   const [Load, setload] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -29,6 +31,7 @@ const ValidationForm = () => {
       fields.phone !== "" ||
       fields.password !== ""
     ) {
+      setload(true);
       axios
         .post(
           "https://repulsive-nightgown-colt.cyclic.app/users/signup",
@@ -36,10 +39,12 @@ const ValidationForm = () => {
         )
         .then(() => {
           window.alert("Register successful");
+          setload(false);
           navigate("/login");
         })
         .catch((err) => {
           console.log(err);
+          setload(false);
           window.alert("Something went wrong. Please try again");
         });
     } else {
@@ -49,6 +54,7 @@ const ValidationForm = () => {
 
   return (
     <div className="validation_form">
+      {Load ? <Loading/> :  
       <form
         className="myForm"
         noValidate
@@ -155,7 +161,7 @@ const ValidationForm = () => {
             CREATE AN ACCOUNT
           </button>
         </p>
-      </form>
+      </form>}
     </div>
   );
 };

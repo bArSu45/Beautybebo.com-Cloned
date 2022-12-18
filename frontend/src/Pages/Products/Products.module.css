@@ -38,6 +38,7 @@
 }
 #main_add_cart_div{
     display: flex;
+    cursor: pointer;
     width: 60%;
     color: grey;
     /* border: 2px solid yellowgreen; */

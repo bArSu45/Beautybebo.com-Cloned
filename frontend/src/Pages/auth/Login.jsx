@@ -3,15 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { SetLocal } from "../../Utils/localstorage";
+import Loading from "../../Components/CartProductCard/Loading";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [Load, setload] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
     if (email !== "" && password !== "") {
+      setload(true)
       axios
         .post("https://repulsive-nightgown-colt.cyclic.app/users/login", {
           email,
@@ -19,6 +22,7 @@ function Login() {
         })
         .then((res) => {
           window.alert("Login successful");
+          setload(false)
           //   console.log(res.data.loginUser.accessToken);
           SetLocal("auth", res.data.loginUser.accessToken);
           if (res.data.loginUser.isAdmin) {
@@ -39,6 +43,7 @@ function Login() {
 
   return (
     <div className="login_parent">
+      {Load ? <Loading/> :  
       <div className="existing_and_new_users">
         <div className="existing_customer">
           <p className="existing_user_tag">Existing Customers</p>
@@ -86,7 +91,7 @@ function Login() {
             <button className="continue_to_register">CONTINUE</button>
           </Link>
         </div>
-      </div>
+      </div>}
     </div>
   );
 }
