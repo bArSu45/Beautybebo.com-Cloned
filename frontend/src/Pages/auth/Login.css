@@ -77,6 +77,10 @@
     cursor: pointer;
     margin-bottom: 30px;
   }
+  .input_login {
+    width: 100%;
+    height: 45px;
+  }
 }
 
 /* For medium screen */
