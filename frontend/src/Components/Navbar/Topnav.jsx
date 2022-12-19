@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { GetLocal, SetRemove } from "../../Utils/localstorage";
 import { useEffect } from "react";
 import { useState } from "react";
+import swal from "sweetalert";
 
 const Topnav = () => {
   const isAdmin = JSON.parse(localStorage.getItem("isAdmin")) || false;
@@ -20,9 +21,15 @@ const Topnav = () => {
     e.preventDefault();
     localStorage.removeItem("isAdmin");
     SetRemove("auth");
-    setLoad(Token);
-    window.alert("Logout Successfully !");
-    navigate("/");
+    swal({
+      title: "Logout Successfully !",
+      text: "Go to Main Page",
+      icon: "success",
+      button: "ok",
+    }).then(() => {
+      setLoad(Token);
+      navigate("/");
+    });
   };
 
   useEffect(() => {}, [Load]);
@@ -30,7 +37,12 @@ const Topnav = () => {
     if (isAdmin) {
       navigate("/admin");
     } else {
-      window.alert("You are not Authorised");
+      swal({
+        title: "Admin!",
+        text: "You are not Authrized",
+        icon: "error",
+        button: "ok",
+      });
     }
   };
   return (
@@ -44,8 +56,8 @@ const Topnav = () => {
           ></img>
         </Link>
       </div>
-
-      <Navinput />
+<div className={styles.navin}  > 
+      <Navinput /> </div>
       <div
         style={{
           display: "flex",

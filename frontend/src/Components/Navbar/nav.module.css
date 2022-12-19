@@ -1,4 +1,6 @@
 .top {
+  width:100%;
+ 
   display: flex;
   justify-content: center;
   gap: 0.5rem;
@@ -135,7 +137,8 @@ display:flex;
   width: 0px;
 }
 
-@media screen and (max-width:950px) and (min-width:200px) {
+
+@media screen and (max-width:950px) and (min-width:300px) {
 
   .imagediv{
     height: 130px;
@@ -153,7 +156,7 @@ display:flex;
     flex-direction: column;
   }
   .mediaznavinputsearch{
-    width: 90vw;
+    width: 100vw;
   }
   .mediaaccount{
     display: flex;
@@ -161,4 +164,15 @@ display:flex;
    justify-content: space-between;
    gap: 100px;
   }
+ 
+}
+
+
+@media screen and (max-width:780px) and (min-width:300px){
+ .searchBtn{
+  display: none;
+ }
+ .navin{
+  display: none;
+ }
 }

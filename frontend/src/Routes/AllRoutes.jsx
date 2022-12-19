@@ -31,6 +31,7 @@ export default function AllRoutes() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/*" element={<>   404 Not Found... </>} />
       </Routes>
     </div>
   );

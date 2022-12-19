@@ -6,6 +6,9 @@ import { EDIT_CARD_DATA } from "../../Redux/CartReducer/CartAction";
 import ButtonComponent from "../ButtonComponent";
 import Loading from "../CartProductCard/Loading";
 import styles from "./EditComponent.module.css";
+import swal from "sweetalert"
+import axios from "axios";
+import { GetLocal } from "../../Utils/localstorage";
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
@@ -23,14 +26,44 @@ function EditComponent({
   const [data, setData] = useState({ Price: price, Qty: qty });
   const [load, setLoad] = useState(false);
   const dispatch = useDispatch();
+  const Token = GetLocal("auth") || "";
 
   const handleConfirm = async (e) => {
     e.preventDefault();
-    setLoad(true);
     const Value = { id: id, quantity: data.Qty };
-    dispatch(EDIT_CARD_DATA(Value));
-    await simulateNetworkRequest().then((res) => setLoad(false));
-    getCard_data();
+   await axios
+     .patch(
+       `https://pleasant-foal-cloak.cyclic.app/carts/${Value.id}`,
+       { quantity: Value.quantity },
+       {
+         headers: {
+           token: `Bearer ${Token}`,
+         },
+       }
+     )
+     .then((res) => {
+       getCard_data();
+       swal({
+         title: "Updated",
+         text: "Cart updated Successfully",
+         icon: "success",
+         button: "ok",
+       });
+     })
+     .catch((err) =>
+       swal({
+         title: "Updated Failed",
+         text: "Cart updated Failed",
+         icon: "error",
+         button: "ok",
+       })
+     );
+   
+   
+    // setLoad(true);
+    
+    // await simulateNetworkRequest().then((res) => setLoad(false));
+   
   };
 
   useEffect(() => {}, [load]);
@@ -41,7 +74,12 @@ function EditComponent({
       let new_value = data.Qty + 1;
       setData({ ...data, Price: new_value * price, Qty: new_value });
     } else {
-      window.alert("Maxmimum Limit Exceed");
+       swal({
+         title: "Limit Exceed",
+         text: "You can't add Maximum !",
+         icon: "error",
+         button: "ok",
+       });
     }
   };
 
@@ -51,7 +89,12 @@ function EditComponent({
       let new_value = data.Qty - 1;
       setData({ ...data, Price: new_value * price, Qty: new_value });
     } else {
-      window.alert("Minimum 1 Quantity");
+       swal({
+         title: "Minimum 1 Quantity Need !",
+         text: "",
+         icon: "error",
+         button: "ok",
+       });
     }
   };
   return (

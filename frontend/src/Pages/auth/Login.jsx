@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { SetLocal } from "../../Utils/localstorage";
 import Loading from "../../Components/CartProductCard/Loading";
+import swal from "sweetalert"
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -21,23 +22,40 @@ function Login() {
           password,
         })
         .then((res) => {
-          window.alert("Login successful");
-          setload(false);
-          //   console.log(res.data.loginUser.accessToken);
-          SetLocal("auth", res.data.loginUser.accessToken);
-          if (res.data.loginUser.isAdmin) {
-            localStorage.setItem("isAdmin", JSON.stringify(true));
-            navigate("/admin");
-          } else {
-            navigate("/");
+          swal({
+            title: "Good job!",
+            text: "Login Successfully",
+            icon: "success",
+            button: "ok",
+          }).then(() =>
+          {
+            setload(false)
+             SetLocal("auth", res.data.loginUser.accessToken);
+             if (res.data.loginUser.isAdmin) {
+               localStorage.setItem("isAdmin", JSON.stringify(true));
+               navigate("/admin");
+             } else {
+               navigate("/");
+             }
           }
+          )
+         
         })
         .catch((err) => {
-          console.log(err);
-          window.alert("Fill correct details");
+          swal({
+            title: "Login Failed!",
+            text: "Try again",
+            icon: "error",
+            button: "ok",
+          }).then((res)=> setload(false))
         });
     } else {
-      alert("Credential doesn't match. Please fill correct details !");
+      swal({
+        title: "Try again!",
+        text: "Plaese Fill All details!",
+        icon: "error",
+        button: "ok",
+      });
     }
   };
 

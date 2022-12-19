@@ -7,8 +7,6 @@ import {
   USER_GET_SUCCESS,
 } from "./AdminType";
 
-
-
 import axios from "axios";
 
 export const user_getReq = () => {
@@ -34,18 +32,21 @@ export const product_postFailure = (payload) => {
   return { type: PRODUCT_POST_FAILURE, payload };
 };
 
-export const POST_PRODUCT = (Token,data) => (dispatch) => {
+export const POST_PRODUCT = (Token, data) => (dispatch) => {
   dispatch(product_postReq());
   axios
     .post("https://pleasant-foal-cloak.cyclic.app/products", data, {
       headers: {
-        token:`Bearer ${Token}`   
+        token: `Bearer ${Token}`,
       },
-    }).then((res) => {
-      console.log("success")
+    })
+    .then((res) => {
+      console.log("success");
       return dispatch(product_postSuccess(res.data));
     })
-    .catch((err) => {return dispatch(product_postFailure("Error"))});
+    .catch((err) => {
+      return dispatch(product_postFailure("Error"));
+    });
 };
 
 export const Product_Edit = () => (dispatch) => {};
@@ -54,7 +55,7 @@ export const Product_Delete = () => (dispatch) => {};
 export const GET_USER = (Token) => (dispatch) => {
   dispatch(user_getReq());
   return axios
-    .get("https://pleasant-foal-cloak.cyclic.app/users", {
+    .get(`https://pleasant-foal-cloak.cyclic.app/users`, {
       headers: {
         token: `Bearer ${Token}`,
       },

@@ -2,6 +2,7 @@ import "./Register.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import ValidationForm from "./ValidationForm";
+// import swal from "sweetalert";
 
 function Register() {
   return (

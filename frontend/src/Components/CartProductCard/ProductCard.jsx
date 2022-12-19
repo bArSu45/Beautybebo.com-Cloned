@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import EditComponent from "../EditCardComponet/EditComponent";
 import { memo, useEffect, useState } from "react";
 import { EDIT_CARD_DELETE } from "../../Redux/CartReducer/CartAction";
-
+import swal from "sweetalert";
 
 
  function ProductCard({

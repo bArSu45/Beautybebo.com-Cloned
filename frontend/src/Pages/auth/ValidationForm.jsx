@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import Loading from "../../Components/CartProductCard/Loading";
-
+import swal from "sweetalert"
 const initialState = {
   firstName: "",
   lastName: "",
@@ -38,17 +38,35 @@ const ValidationForm = () => {
           fields
         )
         .then(() => {
-          window.alert("Register successful");
-          setload(false);
+           swal({
+             title: "Register successful !",
+             text: "Go to Login",
+             icon: "success",
+             button: "ok",
+           }).then(() => {
+             setload(false);
           navigate("/login");
+           })
         })
         .catch((err) => {
-          console.log(err);
-          setload(false);
-          window.alert("Something went wrong. Please try again");
+           swal({
+             title: "Register Failed !",
+             text: "Please Try again",
+             icon: "error",
+             button: "ok",
+           }).then(() => {
+             setload(false);
+           });
         });
     } else {
-      window.alert("Please add required fields !");
+      swal({
+        title: "Register Failed !",
+        text: "Please add required fields !",
+        icon: "error",
+        button: "ok",
+      }).then(() => {
+        setload(false);
+      });
     }
   };
 

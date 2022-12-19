@@ -34,7 +34,7 @@ const Navinput = () => {
     setQ(data);
   };
   useEffect(() => {
-    let timeout= setTimeout(() => {
+    let timeout = setTimeout(() => {
       if (q === "") {
         setSuggestion([]);
       } else {
@@ -46,10 +46,8 @@ const Navinput = () => {
             console.log(e);
           });
       }
-      
     }, 800);
-    return (()=> clearTimeout(timeout))
-    
+    return () => clearTimeout(timeout);
   }, [q]);
 
   console.log("here suggestion", suggestion);
@@ -58,30 +56,29 @@ const Navinput = () => {
     <>
       <InputGroup width="800px" className={styles.medianavinput}>
         <div className={styles.medianavinputmenu}>
-        <Menu >
-          <MenuButton
-            h="48px"
-            px={4}
-            py={2}
-            transition="all 0.2s"
-            borderRadius="md"
-            borderWidth="1px"
-            width="16rem"
-            color="grey"
-          >
-            All Categories <ChevronDownIcon />
-          </MenuButton>
-          <MenuList color="grey">
-            <MenuItem>MAKEUP</MenuItem>
-            <MenuItem>HAIR</MenuItem>
-            <MenuItem>BABY ADN CARE</MenuItem>
-            <MenuItem>PERSONAL CARE</MenuItem>
-            <MenuItem>SKIN</MenuItem>
-            <MenuItem>FRAGRANCE</MenuItem>
-            <MenuItem>BRANDS</MenuItem>
-          </MenuList>
-        </Menu>
-
+          <Menu>
+            <MenuButton
+              h="48px"
+              px={4}
+              py={2}
+              transition="all 0.2s"
+              borderRadius="md"
+              borderWidth="1px"
+              width="16rem"
+              color="grey"
+            >
+              All Categories <ChevronDownIcon />
+            </MenuButton>
+            <MenuList color="grey">
+              <MenuItem>MAKEUP</MenuItem>
+              <MenuItem>HAIR</MenuItem>
+              <MenuItem>BABY ADN CARE</MenuItem>
+              <MenuItem>PERSONAL CARE</MenuItem>
+              <MenuItem>SKIN</MenuItem>
+              <MenuItem>FRAGRANCE</MenuItem>
+              <MenuItem>BRANDS</MenuItem>
+            </MenuList>
+          </Menu>
         </div>
         <Box>
           <Input
@@ -91,10 +88,11 @@ const Navinput = () => {
             placeholder="Enter Your Search Here"
             onChange={(e) => handleText(e.target.value)}
             value={q}
-            w={["100%","100%","100%","40vw"]}
+            w={["70%", "70%", "100%", "40vw"]}
             className={styles.medianavinputsearch}
           />
           <InputRightElement width="3rem" height="3rem">
+            <div className={styles.searchBtn}>  
             <Button
               h="2.5rem"
               size="sm"
@@ -106,9 +104,9 @@ const Navinput = () => {
               }}
             >
               <FaSearch />
-            </Button>
+            </Button></div>
           </InputRightElement>
-          <div className={suggestion.length>0 ? styles.suggestion : null}>
+          <div className={suggestion.length > 0 ? styles.suggestion : null}>
             {suggestion.length > 0
               ? suggestion.map((item, index) => {
                   return (
@@ -122,8 +120,8 @@ const Navinput = () => {
                       }}
                     >
                       <Link to={`/products/${item._id}`}>
-                      <img src={item.image} style={{ height: "40px" }} />
-                      <h3>{item.description}</h3>
+                        <img src={item.image} style={{ height: "40px" }} />
+                        <h3>{item.description}</h3>
                       </Link>
                     </div>
                   );

@@ -1,23 +1,22 @@
-.AdminSidebar{
-    width:20%;
-    padding:2%;
-    border: 1px solid grey;
-    background-color: rgb(65, 62, 62);
-    color: white;
-    text-align: center;
+.AdminSidebar {
+  width: 20%;
+  padding: 2%;
+  border: 1px solid grey;
+  background-color: rgb(65, 62, 62);
+  color: white;
+  text-align: center;
 }
-.AdminRightebar{
-    width:80%;
-    padding: 30px;
-    background-color: rgb(58, 104, 96);
+.AdminRightebar {
+  width: 80%;
+  padding: 30px;
+  background-color: rgb(58, 104, 96);
 }
 
-.userContainer{
+.userContainer {
   display: flex;
-  gap:15px;
-  justify-content: center;
   flex-wrap: wrap;
-
+  justify-content: center;
+  gap: 15px;
 }
 .line {
   position: relative;
@@ -28,8 +27,26 @@
   background: rgb(172, 129, 129);
   margin-bottom: 30px;
 }
+.pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+ 
+  
+}
 
-.handlePoint:hover{
+.pagination2{
+display: flex;
+ border: 1px solid rgb(102, 100, 100);
+  padding: 10px 5px 10px 5px;
+  gap:10px;
+  border-radius: 8px;
+ 
+
+}
+
+.handlePoint:hover {
   cursor: pointer;
   background-color: rgb(231, 55, 164);
 }

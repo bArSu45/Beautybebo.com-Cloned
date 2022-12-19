@@ -15,30 +15,22 @@ import Success from "../../Components/Success";
 export default function Checkout() {
   const [data, setData] = useState(initialState);
   const { loading2, auth2 } = useSelector((store) => store.CartUpdateReducer);
-  const [con, setCon] = useState(false);
-  const Navigate = useNavigate();
+ 
+
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log(location);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
   
-  const handleDeleteMany = async(e) => {
-    await dispatch(CARD_DELETE_ALL());
-    window.alert("Product Orderded Successfully")
-    Navigate("/");
+  const handleDeleteMany =(e) => {
+    dispatch(CARD_DELETE_ALL());
+    
   }
 
-  
 
-  // const handlePaymentLink = (e) => {
-  //   e.preventDefault();
-  //   Navigate("/payment", {
-  //     state: { total_price: location.state.total_price },
-  //   });
-  // }
 
   useEffect(() => {
     

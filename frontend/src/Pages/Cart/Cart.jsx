@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { memo, useEffect, useState } from "react";
-
+import swal from "sweetalert"
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonComponent from "../../Components/ButtonComponent";
@@ -12,6 +12,8 @@ import {
 } from "../../Redux/CartReducer/CartAction";
 
 import styles from "./Cart.module.css";
+import axios from "axios";
+import { GetLocal } from "../../Utils/localstorage";
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2200));
@@ -26,11 +28,36 @@ function Cart() {
   const shpping_carge = 57;
   const Navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleDelete = (id) => {
-    setData({ ...data, render: true });
-    dispatch(EDIT_CARD_DELETE(id)).then(() => getCard_data());
+  const Token = GetLocal("auth");
 
-    // simulateNetworkRequest().then(() => setData({ ...data, render: true }));
+
+  const handleDelete = async (id) => {
+    
+    await axios
+      .delete(`https://pleasant-foal-cloak.cyclic.app/carts/${id}`, {
+        headers: {
+          token: `Bearer ${Token}`,
+        },
+      })
+      .then((res) => {
+        setData({ ...data, render: true });
+        swal({
+          title: "Product Removed Successfully !",
+          text: "",
+          icon: "success",
+          button: "ok",
+        })
+        
+      })
+      .catch((err) =>
+        swal({
+          title: "Product Removed Failed !",
+          text: "Try again",
+          icon: "error",
+          button: "ok",
+        })
+      );
+ 
   };
 
   const UpdateCart = () => {
@@ -39,15 +66,19 @@ function Cart() {
   };
 
   const getCard_data = () => {
-    dispatch(GET_CARD_DATA());
-    const total_val = Cart_Items.reduce((sum, a) => {
+    dispatch(GET_CARD_DATA()).then((res) => {
+      const total_val = Cart_Items.reduce((sum, a) => {
       return sum + a.price * a.quantity;
     }, 0);
     setData({ ...data, CardItem: Cart_Items, total: total_val, render: false });
+    })
+    
   };
 
   const handleCheckout = () => {
-    Navigate("/checkout", { state: { total_price: data.total } });
+    Navigate("/checkout", {
+      state: { total_price: data.total},
+    });
   };
 
   useEffect(() => {
@@ -67,8 +98,8 @@ function Cart() {
         <div>
           {data.CardItem.length === 0 ? (
             <div>
-              <Text>You have no items in your shopping cart.</Text>
-              <Text>
+              <Text p="5px" >You have no items in your shopping cart.</Text>
+              <Text p="5px" mb="15px"  >
                 <Link to="/"> Click here to continue shopping.</Link>
               </Text>
             </div>
