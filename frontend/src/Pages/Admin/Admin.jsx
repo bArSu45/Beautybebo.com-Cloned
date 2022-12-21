@@ -34,12 +34,18 @@ export default function Admin() {
       <div>
         <Flex>
           <div className={styles.AdminSidebar}>
-            <Heading mb="24px">Admin </Heading>
+            <Heading fontSize={["14px", "15px", "18px", "28px"]} mb="24px">
+              Admin{" "}
+            </Heading>
             <div
               className={styles.handlePoint}
               onClick={() => handleClick("dashboard")}
             >
-              <Heading mt="35%" mb="15px" fontSize="20px">
+              <Heading
+                fontSize={["10px", "10px", "14px", "24px"]}
+                mt="35%"
+                mb="15px"
+              >
                 Dashboard
               </Heading>
               <hr className={styles.line} />
@@ -48,7 +54,7 @@ export default function Admin() {
               onClick={() => handleClick("user")}
               className={styles.handlePoint}
             >
-              <Heading mb="18px" fontSize="20px">
+              <Heading mb="18px" fontSize={["10px", "10px", "14px", "24px"]}>
                 Users
               </Heading>
               <hr className={styles.line} />
@@ -57,14 +63,24 @@ export default function Admin() {
               className={styles.handlePoint}
               onClick={() => handleClick("product")}
             >
-              <Heading mb="18px" fontSize="20px">
+              <Heading mb="18px" fontSize={["10px", "10px", "14px", "24px"]}>
                 Products
               </Heading>
               <hr className={styles.line} />
             </div>
           </div>
           <div className={styles.AdminRightebar}>
-          {page==="dashboard" ? <Dashboard/> : <div>{page==="product" ? <Products/> : <div> {page==="user" ? <User  />:<Dashboard/> } </div> } </div>}
+            {page === "dashboard" ? (
+              <Dashboard />
+            ) : (
+              <div>
+                {page === "product" ? (
+                  <Products />
+                ) : (
+                  <div> {page === "user" ? <User /> : <Dashboard />} </div>
+                )}{" "}
+              </div>
+            )}
           </div>
         </Flex>
       </div>

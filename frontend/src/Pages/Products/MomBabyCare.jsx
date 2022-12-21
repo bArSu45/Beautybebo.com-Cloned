@@ -24,8 +24,8 @@ export default function MomBabyCare() {
       }, [])
   return (
     <div style={{display:"flex",width:"80%",margin:"auto"}}>
-        <div style={{width:"25%",border:"1px solid grey"}}>
-        </div>
+        {/* <div style={{width:"25%",border:"1px solid grey"}}>
+        </div> */}
     <div id={style.makeup_main_container}>
         {makeup.length > 0 && makeup.map((item) => {
             return (

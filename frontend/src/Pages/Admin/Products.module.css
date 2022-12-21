@@ -6,3 +6,19 @@
    margin-top: 5%;
 
 }
+
+.prod{
+   display: flex;
+   gap:15px;
+
+
+}
+
+@media screen and (max-width:800px) and (min-width:300px) {
+
+   .prod{
+      flex-direction: column-reverse;
+      gap:20px
+   }
+   
+}

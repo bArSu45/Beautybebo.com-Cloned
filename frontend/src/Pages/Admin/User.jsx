@@ -100,6 +100,7 @@ console.log(user)
                   Admin Access: {singleUser.isAdmin ? "YES" : "NO"}
                 </Text>
                 <Button
+                  size={["xs", "sm", "md", "lg"]}
                   mt="8px"
                   colorScheme="red"
                   onClick={() => handleDelete(singleUser._id)}

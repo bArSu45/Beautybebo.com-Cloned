@@ -7,7 +7,7 @@ export default function PrivateRoutes({ children }) {
   const location = useLocation();
   const isAuth = useSelector((store) => store.AuthReducer.isAuth);
   const Token = GetLocal("auth") || false;
-  console.log(Token)
+ 
   if (!Token) {
     return <Navigate to="/login" state={location.pathname} replace />;
   }

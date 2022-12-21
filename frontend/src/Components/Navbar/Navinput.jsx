@@ -70,12 +70,19 @@ const Navinput = () => {
               All Categories <ChevronDownIcon />
             </MenuButton>
             <MenuList color="grey">
-              <MenuItem>MAKEUP</MenuItem>
-              <MenuItem>HAIR</MenuItem>
+              <Link to="/products">
+                {" "}
+                <MenuItem>SKIN</MenuItem>
+              </Link>
+              <Link to="/makeup">
+                {" "}
+                <MenuItem>MAKEUP</MenuItem>
+              </Link>
+           <Link to="/products">   <MenuItem>HAIR</MenuItem></Link>
               <MenuItem>BABY ADN CARE</MenuItem>
               <MenuItem>PERSONAL CARE</MenuItem>
-              <MenuItem>SKIN</MenuItem>
-              <MenuItem>FRAGRANCE</MenuItem>
+
+             <Link to="/products"> <MenuItem>FRAGRANCE</MenuItem></Link>
               <MenuItem>BRANDS</MenuItem>
             </MenuList>
           </Menu>
@@ -92,19 +99,20 @@ const Navinput = () => {
             className={styles.medianavinputsearch}
           />
           <InputRightElement width="3rem" height="3rem">
-            <div className={styles.searchBtn}>  
-            <Button
-              h="2.5rem"
-              size="sm"
-              color="white"
-              bg="#dd0285"
-              _hover={{
-                background: "white",
-                color: "#dd0285",
-              }}
-            >
-              <FaSearch />
-            </Button></div>
+            <div className={styles.searchBtn}>
+              <Button
+                h="2.5rem"
+                size="sm"
+                color="white"
+                bg="#dd0285"
+                _hover={{
+                  background: "white",
+                  color: "#dd0285",
+                }}
+              >
+                <FaSearch />
+              </Button>
+            </div>
           </InputRightElement>
           <div className={suggestion.length > 0 ? styles.suggestion : null}>
             {suggestion.length > 0

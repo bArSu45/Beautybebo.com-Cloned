@@ -138,7 +138,7 @@ display:flex;
 }
 
 
-@media screen and (max-width:950px) and (min-width:300px) {
+@media screen and (max-width:1090px) and (min-width:300px) {
 
   .imagediv{
     height: 130px;

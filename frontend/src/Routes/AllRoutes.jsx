@@ -10,6 +10,9 @@ import Payment from "../Pages/Payments/Payment";
 import Products from "../Pages/Products/Products";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct";
 import PrivateRoutes from "./PrivateRoutes";
+import PersonalCare from "../Pages/Products/PersonalCare";
+import MakeupData from "../Pages/Products/Makeup";
+
 
 export default function AllRoutes() {
   return (
@@ -27,11 +30,12 @@ export default function AllRoutes() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/makeup" element={<MakeupData />} />
         <Route path="/products/:id" element={<SingleProduct />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<>   404 Not Found... </>} />
+        <Route path="/*" element={<> 404 Not Found... </>} />
       </Routes>
     </div>
   );

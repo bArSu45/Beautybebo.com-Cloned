@@ -39,7 +39,7 @@
 }
 #main_add_cart_div{
     display: flex;
-    width: 50%;
+    width: 90%;
     color: grey;
     /* border: 2px solid yellowgreen; */
     justify-content: space-between;

@@ -16,7 +16,7 @@ import axios from "axios";
 import { GetLocal } from "../../Utils/localstorage";
 
 function simulateNetworkRequest() {
-  return new Promise((resolve) => setTimeout(resolve, 2200));
+  return new Promise((resolve) => setTimeout(resolve, 1000));
 }
 
 function Cart() {
@@ -62,17 +62,29 @@ function Cart() {
 
   const UpdateCart = () => {
     simulateNetworkRequest().then(() => setData({ ...data, render: true }));
-    getCard_data();
   };
 
   const getCard_data = () => {
-    dispatch(GET_CARD_DATA()).then((res) => {
-      const total_val = Cart_Items.reduce((sum, a) => {
-      return sum + a.price * a.quantity;
-    }, 0);
-    setData({ ...data, CardItem: Cart_Items, total: total_val, render: false });
-    })
-    
+    dispatch(GET_CARD_DATA())
+      .then((res) => {
+        const total_val = Cart_Items.reduce((sum, a) => {
+          return sum + a.price * a.quantity;
+        }, 0);
+        setData({
+          ...data,
+          CardItem: Cart_Items,
+          total: total_val,
+          render: false,
+        });
+      })
+      .catch((err) =>
+        swal({
+          title: "Something Went wrong",
+          text: "Please reload page again !",
+          icon: "error",
+          button: "ok",
+        })
+      );    
   };
 
   const handleCheckout = () => {
@@ -83,7 +95,7 @@ function Cart() {
 
   useEffect(() => {
     getCard_data();
-  }, [auth, data.render]);
+  }, [auth,auth2, data.total,data.render]);
 
   return (
     <div className={styles.Cart}>
@@ -224,4 +236,4 @@ function Cart() {
   );
 }
 
-export default memo(Cart);
+export default Cart;

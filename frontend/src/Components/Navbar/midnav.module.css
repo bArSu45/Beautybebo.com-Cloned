@@ -264,7 +264,7 @@
     }
   
 
-    @media screen and (max-width:950px) and (min-width:200px) {
+    @media screen and (max-width:1090px) and (min-width:200px) {
       .nav{
         display: none;
        }

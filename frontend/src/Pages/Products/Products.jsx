@@ -11,6 +11,12 @@ import swal from "sweetalert";
 import { GetLocal } from "../../Utils/localstorage";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/CartProductCard/Loading";
+import { Flex } from "@chakra-ui/react";
+
+
+function simulateNetworkRequest() {
+  return new Promise((resolve) => setTimeout(resolve, 1000));
+}
 export default function Products() {
   const [makeup, setmakeup] = useState([]);
   const [Load, setLoad] = useState(false);
@@ -27,6 +33,11 @@ export default function Products() {
         console.log(e);
       });
   };
+
+  const Get_update = () => {
+    setLoad(true);
+    simulateNetworkRequest().then((res)=>setLoad(false))
+  }
 
   const handleCartClick = (image, price, name) => {
     setLoad(true);
@@ -58,15 +69,17 @@ export default function Products() {
   };
 
   useEffect(() => {
+    Get_update()
     makeupData();
   }, []);
   return (
     <div style={{ display: "flex", width: "80%", margin: "auto" }}>
       {Load ? (
-        <Loading />
+        <Flex alignItems="center" justifyContent="center" p="30px">
+          <Loading />
+        </Flex>
       ) : (
         <>
-          <div style={{ width: "25%", border: "1px solid grey" }}></div>
           <div id={style.makeup_main_container}>
             {makeup.length > 0 &&
               makeup.map((item) => {

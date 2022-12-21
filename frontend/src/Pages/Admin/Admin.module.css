@@ -50,3 +50,15 @@ display: flex;
   cursor: pointer;
   background-color: rgb(231, 55, 164);
 }
+
+
+@media screen and (max-width:600px) and (min-width:300px)  {
+
+  .AdminRightebar {
+ padding: 5px;
+ padding-top: 15px;
+ 
+
+}
+  
+}
