@@ -956,7 +956,7 @@ const MenSubNav = () => {
                           <MenuItem onClick={onClose}>
                             Bath and Accessories
                           </MenuItem>
-                          <MenuItem onClick={onClose}>BAth and Shower</MenuItem>
+                          <MenuItem onClick={onClose}>Bath and Shower</MenuItem>
                         </MenuList>
                       </Link>
                     </Menu>
@@ -973,6 +973,7 @@ const MenSubNav = () => {
               w="120px"
               justifyContent={"center"}
               h="49px"
+              textDecoration="none"
             >
               <Link className={styles.Link} to="/cart">
                 <Text className={styles.text}>STORE</Text>

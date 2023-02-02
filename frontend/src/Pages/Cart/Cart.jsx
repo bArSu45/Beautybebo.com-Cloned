@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import React, { memo, useEffect, useState } from "react";
-import swal from "sweetalert"
+import swal from "sweetalert";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import ButtonComponent from "../../Components/ButtonComponent";
@@ -30,9 +30,7 @@ function Cart() {
   const dispatch = useDispatch();
   const Token = GetLocal("auth");
 
-
   const handleDelete = async (id) => {
-    
     await axios
       .delete(`https://pleasant-foal-cloak.cyclic.app/carts/${id}`, {
         headers: {
@@ -46,8 +44,7 @@ function Cart() {
           text: "",
           icon: "success",
           button: "ok",
-        })
-        
+        });
       })
       .catch((err) =>
         swal({
@@ -57,45 +54,41 @@ function Cart() {
           button: "ok",
         })
       );
- 
   };
 
   const UpdateCart = () => {
     simulateNetworkRequest().then(() => setData({ ...data, render: true }));
   };
 
-  const getCard_data = () => {
-    dispatch(GET_CARD_DATA())
-      .then((res) => {
-        const total_val = Cart_Items.reduce((sum, a) => {
-          return sum + a.price * a.quantity;
-        }, 0);
-        setData({
-          ...data,
-          CardItem: Cart_Items,
-          total: total_val,
-          render: false,
-        });
-      })
-      .catch((err) =>
-        swal({
-          title: "Something Went wrong",
-          text: "Please reload page again !",
-          icon: "error",
-          button: "ok",
-        })
-      );    
+  const set_data = () => {
+    const total_val = Cart_Items.reduce((sum, a) => {
+      return sum + a.price * a.quantity;
+    }, 0);
+    setData({
+      ...data,
+      CardItem: Cart_Items,
+      total: total_val,
+      render: false,
+    });
+  };
+
+  const getCard_data = async () => {
+    await dispatch(GET_CARD_DATA(Token));
   };
 
   const handleCheckout = () => {
     Navigate("/checkout", {
-      state: { total_price: data.total},
+      state: { total_price: data.total },
     });
   };
 
   useEffect(() => {
+     set_data();
+  }, [loading]);
+
+  useEffect(() => {
     getCard_data();
-  }, [auth,auth2, data.total,data.render]);
+  }, [auth, auth2, data.total, data.render]);
 
   return (
     <div className={styles.Cart}>
@@ -110,8 +103,8 @@ function Cart() {
         <div>
           {data.CardItem.length === 0 ? (
             <div>
-              <Text p="5px" >You have no items in your shopping cart.</Text>
-              <Text p="5px" mb="15px"  >
+              <Text p="5px">You have no items in your shopping cart.</Text>
+              <Text p="5px" mb="15px">
                 <Link to="/"> Click here to continue shopping.</Link>
               </Text>
             </div>
@@ -153,7 +146,7 @@ function Cart() {
                   ))}
                   <div>
                     <hr className={styles.line2} />
-                    <Flex justifyContent="space-between" p="15px" >
+                    <Flex justifyContent="space-between" p="15px">
                       <Link to="/">
                         {" "}
                         <ButtonComponent

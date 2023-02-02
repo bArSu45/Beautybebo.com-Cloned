@@ -3,9 +3,12 @@
   .login_parent {
     width: 100%;
     background-color: #f2f2f2f2;
-    margin-top: 170px;
-    padding-top: 50px;
+   
+padding-top: 50px;
     padding-bottom: 50px;
+  }
+  .login_form input{
+    border:0.2px solid grey
   }
 
   .existing_and_new_users {
@@ -79,7 +82,8 @@
   }
   .input_login {
     width: 100%;
-    height: 45px;
+    height: 35px;
+    border-radius: 5px;
   }
 }
 
@@ -88,11 +92,12 @@
   .login_parent {
     width: 100%;
     background-color: #f2f2f2f2;
-    margin-top: 170px;
     padding-top: 50px;
     padding-bottom: 50px;
   }
-
+ .login_form input{
+    border:0.2px solid grey
+  }
   .existing_and_new_users {
     width: 90%;
     margin: auto;
@@ -116,7 +121,11 @@
     margin-top: 30px;
     color: #333333;
   }
-
+ .input_login {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+  }
   .continue_to_register {
     border: none;
     background-color: #222222;
@@ -173,11 +182,12 @@
   .login_parent {
     width: 100%;
     background-color: #f2f2f2f2;
-    margin-top: 170px;
     padding-top: 50px;
     padding-bottom: 50px;
   }
-
+ .login_form input{
+    border:0.2px solid grey
+  }
   .existing_and_new_users {
     width: 100%;
     margin: auto;
@@ -250,5 +260,11 @@
     margin-top: 20px;
     cursor: pointer;
     margin-bottom: 30px;
+  }
+
+   .input_login {
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
   }
 }

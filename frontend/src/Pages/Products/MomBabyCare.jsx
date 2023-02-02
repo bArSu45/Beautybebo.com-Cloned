@@ -9,13 +9,16 @@ export default function MomBabyCare() {
     const [makeup, setmakeup] = useState([])
 
     const makeupData = () => {
-        axios.get(`https://repulsive-nightgown-colt.cyclic.app/products?category=mombabycare`)
+        axios
+          .get(
+            `https://pleasant-foal-cloak.cyclic.app/products?category=mombabycare`
+          )
           .then((res) => {
-            setmakeup(res.data)
-    
-          }).catch((e) => {
-            console.log(e)
+            setmakeup(res.data);
           })
+          .catch((e) => {
+            console.log(e);
+          });
       }
 
       useEffect(() => {

@@ -21,9 +21,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const getData = (data) => {
-  return axios.get(
-    `https://repulsive-nightgown-colt.cyclic.app/navbars?q=${data}`
-  );
+  return axios.get(`https://pleasant-foal-cloak.cyclic.app/navbars?q=${data}`);
 };
 
 const Navinput = () => {

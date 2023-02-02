@@ -35,22 +35,24 @@ const Cart_FAILURE = (payload) => {
 
 const Token = GetLocal("auth");
 
-export const GET_CARD_DATA = () => (dispatch) => {
+export const GET_CARD_DATA = (auth) => async (dispatch) => {
   dispatch(Cart_REQUEST());
-  return axios
-    .get("https://pleasant-foal-cloak.cyclic.app/carts", {
+  try {
+    let res = await axios.get("https://pleasant-foal-cloak.cyclic.app/carts", {
       headers: {
-        token: `Bearer ${Token}`,
+        token: `Bearer ${auth}`,
       },
-    })
-    .then((res) => dispatch(Cart_SUCCESS(res.data)))
-    .catch((err) => dispatch(Cart_FAILURE("Error")));
+    });
+    console.log(res)
+    return dispatch(Cart_SUCCESS(res.data));
+  } catch (err) {
+    return dispatch(Cart_FAILURE("Error"));
+  }
 };
 
-
-export const ADD_CARD_DATA = (data) => (dispatch) => {
-   dispatch(cartUpdate_Req());
-  return axios
+export const ADD_CARD_DATA = (data) => async(dispatch) => {
+  dispatch(cartUpdate_Req());
+  return await axios
     .post("https://pleasant-foal-cloak.cyclic.app/carts/add", data, {
       headers: {
         token: `Bearer ${Token}`,
@@ -65,7 +67,6 @@ export const ADD_CARD_DATA = (data) => (dispatch) => {
 };
 
 export const EDIT_CARD_DATA = (data) => (dispatch) => {
-  
   dispatch(cartUpdate_Req());
   axios
     .patch(
@@ -85,20 +86,18 @@ export const EDIT_CARD_DATA = (data) => (dispatch) => {
     });
 };
 export const EDIT_CARD_DELETE = (data) => (dispatch) => {
-  
   dispatch(cartUpdate_Req());
-   axios
-     .delete(`https://pleasant-foal-cloak.cyclic.app/carts/${data}`, {
-       headers: {
-         token: `Bearer ${Token}`,
-       },
-     })
-     .then((res) => {
-       return dispatch(cartUpdate_Success(res.data));
-     })
-     .catch((err) => dispatch(cartUpdate_Failed("Error")));
+  axios
+    .delete(`https://pleasant-foal-cloak.cyclic.app/carts/${data}`, {
+      headers: {
+        token: `Bearer ${Token}`,
+      },
+    })
+    .then((res) => {
+      return dispatch(cartUpdate_Success(res.data));
+    })
+    .catch((err) => dispatch(cartUpdate_Failed("Error")));
 };
-
 
 export const CARD_DELETE_ALL = () => (dispatch) => {
   dispatch(cartUpdate_Req());

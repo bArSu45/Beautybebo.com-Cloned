@@ -3,11 +3,18 @@
   .register_page {
     width: 100%;
     background-color: #f2f2f2;
-    margin-top: 170px;
-    padding-top: 50px;
+   padding-top: 50px;
     padding-bottom: 50px;
   }
+.signup_form {
+  width: 100%;
+}
 
+  .signup_form input{
+    border:0.2px solid grey;
+    border-radius: 5px;
+    width: 100%;
+  }
   .register_auth {
     width: 50%;
     height: 100%;
@@ -95,7 +102,6 @@
   .register_page {
     width: 100%;
     background-color: #f2f2f2;
-    margin-top: 170px;
     padding-top: 50px;
     padding-bottom: 50px;
   }
@@ -187,7 +193,6 @@
   .register_page {
     width: 100%;
     background-color: #f2f2f2;
-    margin-top: 50px;
     padding-top: 50px;
     padding-bottom: 50px;
   }

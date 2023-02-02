@@ -56,8 +56,9 @@ const Topnav = () => {
           ></img>
         </Link>
       </div>
-<div className={styles.navin}  > 
-      <Navinput /> </div>
+      <div className={styles.navin}>
+        <Navinput />{" "}
+      </div>
       <div
         style={{
           display: "flex",
@@ -85,9 +86,16 @@ const Topnav = () => {
                     <MenuItem>Login</MenuItem>
                   )}
                 </Link>
-                <Link to="/signup">
-                  <MenuItem>Register</MenuItem>
-                </Link>
+                {Token ? (
+                  <Link to="/profile">
+                    <MenuItem>Profile</MenuItem>
+                  </Link>
+                ) : (
+                  <Link to="/signup">
+                    <MenuItem>Register</MenuItem>
+                  </Link>
+                )}
+
                 <MenuItem onClick={handleAdmin}>Admin</MenuItem>
               </MenuList>
             </Menu>

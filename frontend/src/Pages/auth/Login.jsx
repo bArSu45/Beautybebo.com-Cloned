@@ -17,7 +17,7 @@ function Login() {
     if (email !== "" && password !== "") {
       setload(true);
       axios
-        .post("https://repulsive-nightgown-colt.cyclic.app/users/login", {
+        .post("https://pleasant-foal-cloak.cyclic.app/users/login", {
           email,
           password,
         })
@@ -27,19 +27,16 @@ function Login() {
             text: "Login Successfully",
             icon: "success",
             button: "ok",
-          }).then(() =>
-          {
-            setload(false)
-             SetLocal("auth", res.data.loginUser.accessToken);
-             if (res.data.loginUser.isAdmin) {
-               localStorage.setItem("isAdmin", JSON.stringify(true));
-               navigate("/admin");
-             } else {
-               navigate("/");
-             }
-          }
-          )
-         
+          }).then(() => {
+            setload(false);
+            SetLocal("auth", res.data.loginUser.accessToken);
+            if (res.data.loginUser.isAdmin) {
+              localStorage.setItem("isAdmin", JSON.stringify(true));
+              navigate("/admin");
+            } else {
+              navigate("/");
+            }
+          });
         })
         .catch((err) => {
           swal({
@@ -47,7 +44,7 @@ function Login() {
             text: "Try again",
             icon: "error",
             button: "ok",
-          }).then((res)=> setload(false))
+          }).then((res) => setload(false));
         });
     } else {
       swal({

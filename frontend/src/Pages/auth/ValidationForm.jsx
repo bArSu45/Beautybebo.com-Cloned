@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import Loading from "../../Components/CartProductCard/Loading";
-import swal from "sweetalert"
+import swal from "sweetalert";
 const initialState = {
   firstName: "",
   lastName: "",
@@ -15,7 +15,7 @@ const initialState = {
 
 const ValidationForm = () => {
   const [fields, setFields] = useState(initialState);
-   const [Load, setload] = useState(false);
+  const [Load, setload] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,59 +26,64 @@ const ValidationForm = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
 
-
-    if (fields.password.length !== 6) {
+    if (fields.password.length < 6) {
       swal({
         title: "Register Failed !",
         text: "Password must be 6 letters",
         icon: "error",
         button: "ok",
       });
-    }
-      else if (
-        fields.firstName !== "" ||
-        fields.lastName !== "" ||
-        fields.email !== "" ||
-        fields.phone !== "" ||
-        fields.password !== ""
-      ) {
-        setload(true);
-        axios
-          .post(
-            "https://repulsive-nightgown-colt.cyclic.app/users/signup",
-            fields
-          )
-          .then(() => {
-            swal({
-              title: "Register successful !",
-              text: "Go to Login",
-              icon: "success",
-              button: "ok",
-            }).then(() => {
-              setload(false);
-              navigate("/login");
-            });
-          })
-          .catch((err) => {
-            swal({
-              title: "Register Failed !",
-              text: "Please Try again",
-              icon: "error",
-              button: "ok",
-            }).then(() => {
-              setload(false);
-            });
+    } else if (fields.phone.length != 10 || fields.phone[0] == 0) {
+      swal({
+        title: "Register Failed !",
+        text: "Mobile must be 10 digits",
+        icon: "error",
+        button: "ok",
+      });
+    } else if (
+      fields.firstName !== "" ||
+      fields.lastName !== "" ||
+      fields.email !== "" ||
+      fields.phone !== "" ||
+      fields.password !== ""
+    ) {
+      setload(true);
+      axios
+        .post(
+          "https://pleasant-foal-cloak.cyclic.app/clic.app/users/signup",
+          fields
+        )
+        .then(() => {
+          swal({
+            title: "Register successful !",
+            text: "Go to Login",
+            icon: "success",
+            button: "ok",
+          }).then(() => {
+            setload(false);
+            navigate("/login");
           });
-      } else {
-        swal({
-          title: "Register Failed !",
-          text: "Please add required fields !",
-          icon: "error",
-          button: "ok",
-        }).then(() => {
-          setload(false);
+        })
+        .catch((err) => {
+          swal({
+            title: "Register Failed !",
+            text: "Please Try again",
+            icon: "error",
+            button: "ok",
+          }).then(() => {
+            setload(false);
+          });
         });
-      }
+    } else {
+      swal({
+        title: "Register Failed !",
+        text: "Please add required fields !",
+        icon: "error",
+        button: "ok",
+      }).then(() => {
+        setload(false);
+      });
+    }
   };
 
   return (
@@ -166,7 +171,14 @@ const ValidationForm = () => {
               />
             </label>
             <br />
-            <Text mt="5px" color="red" display={fields.password.length===6 ? "none":"flex"} > Password must be 6 Letters</Text>
+            <Text
+              mt="5px"
+              color="red"
+              display={fields.password.length >= 6 ? "none" : "flex"}
+            >
+              {" "}
+              Password must be 6 Letters
+            </Text>
           </p>
 
           {/* Confirm password */}

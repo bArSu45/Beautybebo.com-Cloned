@@ -25,13 +25,16 @@ export default function MakeupData() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
     const makeupData = () => {
-        axios.get(`https://repulsive-nightgown-colt.cyclic.app/products?category=makeup`)
+        axios
+          .get(
+            `https://pleasant-foal-cloak.cyclic.app/products?category=makeup`
+          )
           .then((res) => {
-            setmakeup(res.data)
-    
-          }).catch((e) => {
-            console.log(e)
+            setmakeup(res.data);
           })
+          .catch((e) => {
+            console.log(e);
+          });
   }
     const Get_update = () => {
       setLoad(true);

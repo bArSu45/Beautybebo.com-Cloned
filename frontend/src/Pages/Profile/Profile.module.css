@@ -1,0 +1,124 @@
+.profileBtn button {
+  background-color: rgb(13, 202, 161);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  margin-bottom: 10px;
+}
+
+.profileBtn h1{
+    font-weight: 500;
+    font-size: 20px;
+}
+.container{
+    width:90%;
+    margin: auto;
+}
+.middle {
+  width: 90%;
+  margin: auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  background-color: rgb(183, 240, 235);
+  margin-right: 0;
+}
+.btn:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  cursor: pointer;
+}
+.profileBtn {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  margin-top: 25px;
+  margin-left: 8%;
+}
+.profileBtn > div:nth-child(2) {
+  display: flex;
+  gap: 18px;
+}
+
+.frn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.About {
+  background-color: rgb(183, 240, 235);
+}
+    .prflImage {
+   margin-left: 11%;
+margin-top: 20px;
+}
+
+.prflImage>img{
+width:15%;
+border-radius: 50%;
+}
+
+.prflImage img{
+    width:10%
+}
+
+.container {
+  display: flex;
+  padding: 15px;
+  flex-direction: column;
+  justify-content: center;
+}
+.PostCard {
+  height: 350px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  background-color: white;
+  border-radius: 18px;
+}
+
+.back {
+  background-color: transparent;
+  position: fixed;
+  cursor: pointer;
+  z-index: 10;
+}
+h1 {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 3px;
+}
+@media all and (min-width: 200px) and (max-width: 900px) {
+  .middle {
+    width: 95%;
+  }
+
+    .prflImage {
+   margin-left: 10%;
+margin-top: 20px;
+}
+
+.prflImage img{
+    width:40%
+}
+}
+
+@media all and (min-width: 200px) and (max-width: 500px) {
+  .middle {
+    margin-left: 5px;
+  }
+
+  .prflImage {
+   margin-left: 18%;
+margin-top: 20px;
+}
+
+.prflImage img{
+    width:40%
+}
+.profileBtn{
+    flex-direction: column;
+    gap:30px
+}
+}

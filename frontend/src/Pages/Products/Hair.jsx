@@ -9,13 +9,14 @@ export default function Hair() {
     const [makeup, setmakeup] = useState([])
 
     const makeupData = () => {
-        axios.get(`https://repulsive-nightgown-colt.cyclic.app/products?category=hair`)
+        axios
+          .get(`https://pleasant-foal-cloak.cyclic.app/products?category=hair`)
           .then((res) => {
-            setmakeup(res.data)
-    
-          }).catch((e) => {
-            console.log(e)
+            setmakeup(res.data);
           })
+          .catch((e) => {
+            console.log(e);
+          });
       }
 
       useEffect(() => {

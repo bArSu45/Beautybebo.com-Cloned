@@ -2,7 +2,16 @@
 @media only screen and (min-width: 1008px) {
   .validation_form {
     width: 100%;
+    
   }
+
+  .myForm{
+    width:100%;
+  }
+
+.myForm input{
+  width: 200%;
+}
   .title_validation {
     margin-bottom: 20px;
   }
@@ -18,7 +27,7 @@
 
   .validation_input {
     width: 100%;
-    height: 46px;
+    height: 36px;
     padding: 1px 3px;
   }
 
@@ -51,14 +60,22 @@
     font-weight: 700;
     color: #333333;
   }
+  .myForm{
+    width:100%;
+  }
 
+.myForm input{
+  width: 200%;
+  border: 0.3px solid grey;
+  border-radius: 5px;
+}
   .title_validation > label > input {
     margin-top: 10px;
   }
 
   .validation_input {
     width: 98%;
-    height: 46px;
+    height: 36px;
     padding: 1px 3px;
   }
 
@@ -95,7 +112,15 @@
   .title_validation > label > input {
     margin-top: 10px;
   }
+ .myForm{
+    width:100%;
+  }
 
+.myForm input{
+  width: 200%;
+  border: 0.3px solid grey;
+  border-radius: 5px;
+}
   .validation_input {
     width: 98%;
     height: 30px;

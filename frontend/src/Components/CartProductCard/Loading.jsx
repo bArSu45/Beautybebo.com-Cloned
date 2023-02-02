@@ -1,12 +1,13 @@
 
-import { Flex ,Heading} from "@chakra-ui/react";
+import { Flex ,Heading,Center} from "@chakra-ui/react";
 import { Spinner } from "react-bootstrap";
 
 export default function Loading() {
  
     
 
-    return (
+  return (
+      <Center>  
         <Flex justifyContent="center" alignItems="center" gap="10px" > 
         <Heading fontSize="18px" >Loading</Heading>    
       <Flex gap="8px">
@@ -14,6 +15,7 @@ export default function Loading() {
         <Spinner animation="grow" size="sm" variant="info" />
         <Spinner animation="grow" size="sm" variant="info"  />
         <Spinner animation="grow" size="sm" variant="info" />
-      </Flex></Flex>
+        </Flex></Flex>
+    </Center>
     );
 }

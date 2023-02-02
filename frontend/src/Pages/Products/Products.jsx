@@ -25,7 +25,7 @@ export default function Products() {
   const dispatch = useDispatch();
   const makeupData = () => {
     axios
-      .get(`https://repulsive-nightgown-colt.cyclic.app/products?category=skin`)
+      .get(`https://pleasant-foal-cloak.cyclic.app/products?category=skin`)
       .then((res) => {
         setmakeup(res.data);
       })
