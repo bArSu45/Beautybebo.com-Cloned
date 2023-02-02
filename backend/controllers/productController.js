@@ -28,6 +28,28 @@ const getProducts = async (req, res) => {
   }
 };
 
+
+
+const getProductCount = async (req, res) => {
+  
+  try {
+    const products = await Product.countDocuments();
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+
+const getProductStock = async (req, res) => {
+  try {
+    const products = await Product.countDocuments({ inStock :true});
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
 /* GET PRODUCT BY ID */
 const getProductsById = async (req, res) => {
   try {
@@ -69,10 +91,14 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+
+
 module.exports = {
   addProduct,
   getProducts,
   getProductsById,
   updateProduct,
   deleteProduct,
+  getProductCount,
+  getProductStock,
 };

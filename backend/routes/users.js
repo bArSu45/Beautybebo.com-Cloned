@@ -5,11 +5,10 @@ const {
   getUserById,
   getUsers,
   deleteUser,
+  getUserCount,
+  updateUserById
 } = require("../controllers/userController");
-const {
-  verifyTokenAndAdmin,
-  verifyTokenAndAuthorization,
-} = require("../middlewares/verifyToken");
+const { VerifyAdmin, CartMiddleWare } = require("../middlewares/verifyToken");
 
 const userRoutes = express.Router();
 
@@ -19,14 +18,24 @@ userRoutes.post("/signup", userSignup);
 /* LOGIN */
 userRoutes.post("/login", userLogin);
 
+
+
+
+/* Get user Count*/
+userRoutes.get("/count", VerifyAdmin, getUserCount);
+
+
 /* GET ALL USER */
-userRoutes.get("/", verifyTokenAndAdmin, getUsers);
+userRoutes.get("/", VerifyAdmin, getUsers);
 
 /* GET USER */
-userRoutes.get("/:id", verifyTokenAndAdmin, getUserById);
+userRoutes.get("/singleuser", CartMiddleWare, getUserById);
+
+/* USER Data Update */
+userRoutes.patch("/singleuser", CartMiddleWare, updateUserById);
 
 /* DELETE USER */
-userRoutes.delete("/:id", verifyTokenAndAuthorization, deleteUser);
+userRoutes.delete("/:id", VerifyAdmin, deleteUser);
 
 module.exports = userRoutes;
 

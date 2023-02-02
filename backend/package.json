@@ -4,9 +4,9 @@
   "description": "This is the backend of beautybebo.com.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "author": "Abhijit Biswas",
+  "author": "Jyotiranjan Mohanty",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -14,6 +14,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.8.0"
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20"
   }
 }

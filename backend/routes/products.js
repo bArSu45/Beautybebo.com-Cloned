@@ -5,16 +5,24 @@ const {
   getProductsById,
   updateProduct,
   deleteProduct,
+  getProductCount,
+  getProductStock,
 } = require("../controllers/productController");
-const { verifyTokenAndAdmin } = require("../middlewares/verifyToken");
+const { verifyTokenAndAdmin, VerifyAdmin } = require("../middlewares/verifyToken");
 
 const productRoute = express.Router();
 
 /* CREATE */
-productRoute.post("/", verifyTokenAndAdmin, addProduct);
+
+productRoute.post("/", VerifyAdmin, addProduct);
 
 /* GET ALL PRODUCTS */
 productRoute.get("/", getProducts);
+
+
+productRoute.get("/count", VerifyAdmin, getProductCount);
+
+productRoute.get("/stockcount", VerifyAdmin, getProductStock);
 
 /* GET PRODUCT BY ID */
 productRoute.get("/:id", getProductsById);

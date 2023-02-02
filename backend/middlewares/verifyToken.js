@@ -28,6 +28,7 @@ const verifyTokenAndAuthorization = (req, res, next) => {
 };
 
 /* VERIFY TOKEN AND ADMIN */
+
 const verifyTokenAndAdmin = (req, res, next) => {
   verifyToken(req, res, () => {
     if (req.user.isAdmin) {
@@ -38,8 +39,45 @@ const verifyTokenAndAdmin = (req, res, next) => {
   });
 };
 
+const VerifyAdmin = (req, res, next) => {
+  const authHeader = req.headers.token;
+  if (authHeader) {
+    const token = authHeader.split(" ")[1];
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      if (err) {
+        res.status(403).json("You are unauthorized !");
+      } else {
+        if (user.isAdmin) {
+          req.body.userId = user.id;
+          req.body.isAdmin = user.isAdmin;
+          next();
+        } else {
+           res.status(403).json("You are unauthorized !");
+        }
+      }
+    });
+  }
+};
+
+const CartMiddleWare = (req, res, next) => {
+  const authHeader = req.headers.token;
+  if (authHeader) {
+    const token = authHeader.split(" ")[1];
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+      if (err) {
+        res.status(403).json("You are unauthorized !");
+      } else {
+        req.body.userId = user.id;
+        next();
+      }
+    });
+  }
+};
+
 module.exports = {
   verifyToken,
   verifyTokenAndAuthorization,
   verifyTokenAndAdmin,
+  CartMiddleWare,
+  VerifyAdmin,
 };

@@ -4,24 +4,28 @@ const {
   updateCart,
   deleteFromCart,
   getUserCart,
+  deleteFromCartMany,
 } = require("../controllers/cartController");
 const {
-  verifyToken,
-  verifyTokenAndAuthorization,
+  CartMiddleWare,
 } = require("../middlewares/verifyToken");
 
 const cartRoutes = express.Router();
 
 /* ADD TO CART */
-cartRoutes.post("/", verifyToken, addToCart);
+cartRoutes.post("/add", CartMiddleWare, addToCart);
 
 /* UPDATE */
-cartRoutes.put("/:id", verifyTokenAndAuthorization, updateCart);
+cartRoutes.patch("/:id", CartMiddleWare, updateCart);
+
+cartRoutes.delete("/deletemany", CartMiddleWare, deleteFromCartMany);
 
 /* DELETE */
-cartRoutes.delete("/:id", verifyTokenAndAuthorization, deleteFromCart);
+cartRoutes.delete("/:id", CartMiddleWare, deleteFromCart);
+
+
 
 /* GET USER CART BY USERID */
-cartRoutes.get("/find/:userId", verifyTokenAndAuthorization, getUserCart);
+cartRoutes.get("/", CartMiddleWare, getUserCart);
 
 module.exports = cartRoutes;

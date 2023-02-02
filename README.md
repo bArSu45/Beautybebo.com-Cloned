@@ -51,6 +51,8 @@
   ![](./assets/signup.png)
 - ### Login
   ![](./assets/login.png)
+- ### Profile Page
+  ![](./assets/profile.png)
 - ### Admin Dashboard
   ![](./assets/admin.png)
 - ### Home Page

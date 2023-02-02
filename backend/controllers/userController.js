@@ -70,19 +70,55 @@ const userLogin = async (req, res) => {
 };
 
 /* GET ALL USERS */
-const getUsers = async (req, res) => {
+
+
+const getUserCount = async (req, res) => {
+  console.log("cc");
   try {
-    const users = await User.find().limit(5);
+    const users = await User.count();
     res.status(200).json(users);
   } catch (err) {
     res.status(500).json(err);
   }
 };
 
+const getUsers = async (req, res) => {
+  const page = req.params.Page;
+  const skip = (+page * 5)-5;
+
+  try {
+    const users = await User.find()
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+
+
+
+
 /* GET USER BY ID */
 const getUserById = async (req, res) => {
+
+  const { userId } = req.body;
+
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(userId);
+    const { password, ...others } = user._doc;
+    res.status(200).json(others);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+const updateUserById = async (req, res) => {
+    const { userId, firstName, lastName, email, phone } = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(
+      { _id: userId },
+      { firstName, lastName, email, phone }
+    );
     const { password, ...others } = user._doc;
     res.status(200).json(others);
   } catch (err) {
@@ -91,13 +127,22 @@ const getUserById = async (req, res) => {
 };
 
 /* DELETE USERS */
+
 const deleteUser = async (req, res) => {
   try {
-    await User.findByIdAndDelete(req.params.id);
+    await User.findByIdAndDelete({_id:req.params.id});
     res.status(200).json("User has been deleted...!");
   } catch (err) {
     res.status(500).json(err);
   }
 };
 
-module.exports = { userSignup, userLogin, getUsers, getUserById, deleteUser };
+module.exports = {
+  userSignup,
+  userLogin,
+  getUsers,
+  getUserById,
+  deleteUser,
+  getUserCount,
+  updateUserById,
+};

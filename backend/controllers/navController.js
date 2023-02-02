@@ -30,15 +30,4 @@ const getNavbarProducts = async (req, res) => {
   }
 };
 
-/* GET PRODUCT BY ID */
-const getNavProductsById = async (req, res) => {
-  try {
-    const navbar = await Navbar.findById(req.params.id);
-    res.status(200).json(navbar);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-};
-
-module.exports = { addNavbarItem, getNavbarProducts, getNavProductsById };
 module.exports = { addNavbarItem, getNavbarProducts };
