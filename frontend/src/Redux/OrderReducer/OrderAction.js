@@ -21,15 +21,15 @@ export const Post_Failed = (payload) => {
 };
 
 export const Get_req = () => {
-  return { type: POST_ORDER_REQ };
+  return { type: GET_ORDER_REQ };
 };
 
 export const Get_Success = (payload) => {
-  return { type: POST_ORDER_SUCCESS, payload };
+  return { type: GET_ORDER_SUCCESS, payload };
 };
 
 export const Get_Failed = (payload) => {
-  return { type: POST_ORDER_FAILED, payload };
+  return { type: GET_ORDER_FAILED, payload };
 };
 
 export const POST_ORDER = (data, auth) => async (dispatch) => {

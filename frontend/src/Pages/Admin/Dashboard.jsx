@@ -1,4 +1,5 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
+import Aos from "aos";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "../../Components/CartProductCard/Loading";
@@ -44,6 +45,7 @@ export default function Dashboard() {
     setAuth(false);
   }
   useEffect(() => {
+    Aos.init();
   get_data()
 },[auth])
 
@@ -54,76 +56,86 @@ export default function Dashboard() {
       ) : (
         <Flex justifyContent="space-around" flexWrap="wrap">
           <Box
+            data-aos="flip-left"
             w="20%"
+            p="5px"
             textAlign="center"
-            border="1px solid black"
-            bgColor="blue.300"
+            border="0.2px solid grey"
+            bgColor="blue.100"
+            cursor="pointer"
+            boxShadow="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
           >
             <Flex justifyContent="center">
               {" "}
               <Image
                 src="/user_logo.png"
-                w={["60%", "60%", "100%", "100%"]}
+                w={["60%", "60%", "40%", "40%"]}
               />{" "}
             </Flex>
-            <Text mt="15px" fontSize={["10px", "10px", "14px", "24px"]}>
+            <Text mt="15px" fontSize={["10px", "10px", "14px", "20px"]}>
               {user} Users Active
             </Text>
           </Box>
           <Box
             w="20%"
+            data-aos="flip-right"
+            p="5px"
             textAlign="center"
-            border="1px solid black"
-            bgColor="blue.300"
+            border="0.2px solid grey"
+            bgColor="blue.100"
+            boxShadow="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
           >
             <Flex justifyContent="center">
-              <Image
-                src="/product_logo.png"
-                w={["60%", "60%", "100%", "100%"]}
-              />
+              <Image src="/product_logo.png" w={["60%", "60%", "40%", "40%"]} />
             </Flex>
-            <Text mt="15px" fontSize={["10px", "10px", "14px", "24px"]}>
+            <Text mt="15px" fontSize={["10px", "10px", "14px", "20px"]}>
               {data} Total Products
             </Text>
           </Box>
           <Box
             w="20%"
+            data-aos="flip-right"
+            p="5px"
             textAlign="center"
-            border="1px solid black"
-            bgColor="blue.300"
+            border="0.2px solid grey"
+            bgColor="blue.100"
+            boxShadow="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
           >
             <Flex justifyContent="center">
               {" "}
               <Image
                 src="/product_logo.png"
-                w={["60%", "60%", "100%", "100%"]}
+                w={["60%", "60%", "40%", "40%"]}
               />{" "}
             </Flex>
             <Text
               color="green"
               mt="15px"
-              fontSize={["10px", "10px", "14px", "24px"]}
+              fontSize={["10px", "10px", "14px", "20px"]}
             >
               {product} Products In Our Stock
             </Text>
           </Box>
           <Box
             w="20%"
+            data-aos="flip-left"
+            p="5px"
             textAlign="center"
-            border="1px solid black"
-            bgColor="blue.300"
+            border="0.2px solid grey"
+            bgColor="blue.100"
+            boxShadow="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
           >
             <Flex justifyContent="center">
               {" "}
               <Image
                 src="/product_logo.png"
-                w={["60%", "60%", "100%", "100%"]}
+                w={["60%", "60%", "40%", "40%"]}
               />{" "}
             </Flex>
             <Text
               color="red"
               mt="15px"
-              fontSize={["10px", "10px", "14px", "24px"]}
+              fontSize={["10px", "10px", "14px", "20px"]}
             >
               {data - product} Products Out of Stock
             </Text>

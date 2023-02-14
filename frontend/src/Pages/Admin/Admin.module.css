@@ -2,14 +2,15 @@
   width: 20%;
   padding: 2%;
   border: 1px solid grey;
-  background-color: rgb(65, 62, 62);
+  background-color: rgb(82, 80, 80);
   color: white;
   text-align: center;
+  margin-top: 0px;
 }
 .AdminRightebar {
   width: 80%;
   padding: 30px;
-  background-color: rgb(58, 104, 96);
+  background-color: rgb(199, 228, 236);
 }
 
 .userContainer {
@@ -27,23 +28,19 @@
   background: rgb(172, 129, 129);
   margin-bottom: 30px;
 }
-.pagination{
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 35px;
- 
-  
 }
 
-.pagination2{
-display: flex;
- border: 1px solid rgb(102, 100, 100);
+.pagination2 {
+  display: flex;
+  border: 1px solid rgb(102, 100, 100);
   padding: 10px 5px 10px 5px;
-  gap:10px;
+  gap: 10px;
   border-radius: 8px;
- 
-
 }
 
 .handlePoint:hover {
@@ -51,14 +48,16 @@ display: flex;
   background-color: rgb(231, 55, 164);
 }
 
-
-@media screen and (max-width:600px) and (min-width:300px)  {
-
-  .AdminRightebar {
- padding: 5px;
- padding-top: 15px;
- 
-
+.single:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  z-index: 1;
+  transition: 2000ms;
 }
-  
+
+@media screen and (max-width: 600px) and (min-width: 300px) {
+  .AdminRightebar {
+    padding: 5px;
+    padding-top: 15px;
+  }
 }

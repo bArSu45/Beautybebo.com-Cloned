@@ -37,7 +37,7 @@ const initialOrders2 = {
 };
 
 export const OrderGetReducer = (state = initialOrders2, { type, payload }) => {
-    console.log(payload)
+    
   switch (type) {
     case GET_ORDER_REQ: {
       return { ...state, orderLoading: true };

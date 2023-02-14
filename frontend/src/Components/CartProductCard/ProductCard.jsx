@@ -7,6 +7,7 @@ import EditComponent from "../EditCardComponet/EditComponent";
 import { memo, useEffect, useState } from "react";
 import { EDIT_CARD_DELETE } from "../../Redux/CartReducer/CartAction";
 import swal from "sweetalert";
+import Aos from "aos";
 
 
  function ProductCard({
@@ -25,11 +26,13 @@ import swal from "sweetalert";
    const handleOpen = (e) => {
      SetOpen(!open);
    };
-
+ useEffect(() => {
+   Aos.init();
+ }, []);
    useEffect(() => {}, [auth2]);
 
    return (
-     <div key={id} className={styles.main}>
+     <div key={id} className={styles.main} data-aos="zoom-in-right">
        <EditComponent
          image={image}
          desc={desc}

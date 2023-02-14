@@ -77,7 +77,7 @@
       top: 65px;
       opacity: 1;
       visibility: visible;
-      z-index: 999;
+      z-index: 99999;
       background-color: white;
       padding: 20px;
       transition: all 0.3s ease-in-out;

@@ -49,7 +49,7 @@ export const GET_CARD_DATA = (auth) => async (dispatch) => {
   }
 };
 
-export const ADD_CARD_DATA = (data) => async(dispatch) => {
+export const ADD_CARD_DATA = (data, Token) => async (dispatch) => {
   dispatch(cartUpdate_Req());
   return await axios
     .post("https://pleasant-foal-cloak.cyclic.app/carts/add", data, {

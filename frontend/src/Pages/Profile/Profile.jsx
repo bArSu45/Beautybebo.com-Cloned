@@ -1,4 +1,5 @@
 import { Flex } from "@chakra-ui/react";
+import Aos from "aos";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +15,6 @@ import Styles from "./Profile.module.css";
 // import CircumIcon from "@klarr-agency/circum-icons-react";
 
 const get_data = async (auth) => {
-  console.log(auth);
   let res = await axios.get(
     "https://pleasant-foal-cloak.cyclic.app/users/singleuser",
     {
@@ -23,7 +23,7 @@ const get_data = async (auth) => {
       },
     }
   );
-  console.log(res);
+
   return res;
 };
 
@@ -37,7 +37,7 @@ export default function Profile() {
   const dispatch = useDispatch();
   const Token = GetLocal("auth") || false;
   const { Cart_Items, auth, error } = useSelector((store) => store.CartReducer);
-  console.log(Orders);
+
   const profile = async () => {
     setLoading(true);
     await dispatch(GET_CARD_DATA(Token));
@@ -54,17 +54,24 @@ export default function Profile() {
       }).then(() => setLoading(true));
     }
   };
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   useEffect(() => {
     profile();
-  }, [orderLoading]);
+  }, []);
 
   return (
-    <div className={Styles.container}>
+    <div className={Styles.container} data-aos="fade-down">
       {loading ? (
         <Loading />
       ) : (
-        <div className={Styles.middle}>
+        <div
+          className={Styles.middle}
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
           <div className={Styles.back}></div>
 
           <div className={Styles.background}>
@@ -83,13 +90,21 @@ export default function Profile() {
               </div>
 
               <div>
-                <div className={Styles.frn}>
+                <div
+                  className={Styles.frn}
+                  data-aos="fade-down"
+                  data-aos-duration="3000"
+                >
                   <h1>{order.length}</h1>
                   <Link to="/orders">
                     <ButtonComponent bgColor="pink" Title="Oders" />
                   </Link>
                 </div>
-                <div className={Styles.frn}>
+                <div
+                  className={Styles.frn}
+                  data-aos="fade-down"
+                  data-aos-duration="3000"
+                >
                   <h1>{Cart_Items.length}</h1>
                   <Link to="/cart">
                     <ButtonComponent bgColor="pink" Title="Carts" />

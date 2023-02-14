@@ -80,34 +80,42 @@ console.log(user)
         ) : (
           <>
             {user.map((singleUser) => (
-              <Box
-                border="1px solid black"
-                p="10px"
-                textAlign="center"
-                color="white"
-                key={singleUser._id}
+              <div
+                className={styles.single}
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-bottom"
+                data-aos-duration="1500"
               >
-                <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
-                  First Name: {singleUser.firstName}
-                </Text>
-                <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
-                  Last Name: {singleUser.lastName}
-                </Text>
-                <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
-                  Email: {singleUser.email}
-                </Text>
-                <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
-                  Admin Access: {singleUser.isAdmin ? "YES" : "NO"}
-                </Text>
-                <Button
-                  size={["xs", "sm", "md", "lg"]}
-                  mt="8px"
-                  colorScheme="red"
-                  onClick={() => handleDelete(singleUser._id)}
+                <Box
+                  bgColor="blue.100"
+                  p="10px"
+                  textAlign="center"
+                  borderRadius="5px"
+                  key={singleUser._id}
+                  boxShadow="rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px"
                 >
-                  Delete
-                </Button>
-              </Box>
+                  <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
+                    First Name: {singleUser.firstName}
+                  </Text>
+                  <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
+                    Last Name: {singleUser.lastName}
+                  </Text>
+                  <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
+                    Email: {singleUser.email}
+                  </Text>
+                  <Text fontSize={["8px", "8px", "14px", "14px"]} mt="8px">
+                    Admin Access: {singleUser.isAdmin ? "YES" : "NO"}
+                  </Text>
+                  <Button
+                    size="sm"
+                    mt="8px"
+                    colorScheme="red"
+                    onClick={() => handleDelete(singleUser._id)}
+                  >
+                    Delete
+                  </Button>
+                </Box>
+              </div>
             ))}
           </>
         )}

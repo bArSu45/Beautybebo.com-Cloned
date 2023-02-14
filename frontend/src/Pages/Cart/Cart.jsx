@@ -14,6 +14,7 @@ import {
 import styles from "./Cart.module.css";
 import axios from "axios";
 import { GetLocal } from "../../Utils/localstorage";
+import Aos from "aos";
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 1000));
@@ -83,7 +84,8 @@ function Cart() {
   };
 
   useEffect(() => {
-     set_data();
+    set_data();
+    Aos.init();
   }, [loading]);
 
   useEffect(() => {
@@ -146,7 +148,11 @@ function Cart() {
                   ))}
                   <div>
                     <hr className={styles.line2} />
-                    <Flex justifyContent="space-between" p="15px">
+                    <Flex
+                      justifyContent="space-between"
+                      p="15px"
+                      data-aos="fade-right"
+                    >
                       <Link to="/">
                         {" "}
                         <ButtonComponent
@@ -168,7 +174,7 @@ function Cart() {
                   </div>
                 </div>
               </div>
-              <div className={styles.Payment}>
+              <div className={styles.Payment} data-aos="fade-up">
                 <Heading fontSize="20px">SUMMARY</Heading>
                 <div className={styles.PaymentBox}>
                   <Heading fontSize="15px">ESTIMATE SHIPPING AND TAX </Heading>

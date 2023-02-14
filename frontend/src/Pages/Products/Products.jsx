@@ -12,10 +12,11 @@ import { GetLocal } from "../../Utils/localstorage";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/CartProductCard/Loading";
 import { Flex } from "@chakra-ui/react";
+import Aos from "aos";
 
 
 function simulateNetworkRequest() {
-  return new Promise((resolve) => setTimeout(resolve, 1000));
+  return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 export default function Products() {
   const [makeup, setmakeup] = useState([]);
@@ -48,7 +49,7 @@ export default function Products() {
         name,
       };
 
-      dispatch(ADD_CARD_DATA(data)).then((res) => {
+      dispatch(ADD_CARD_DATA(data, Token)).then((res) => {
         swal({
           title: "Product added Successfully !",
           text: "",
@@ -69,6 +70,7 @@ export default function Products() {
   };
 
   useEffect(() => {
+    Aos.init();
     Get_update()
     makeupData();
   }, []);
@@ -84,7 +86,11 @@ export default function Products() {
             {makeup.length > 0 &&
               makeup.map((item) => {
                 return (
-                  <div id={style.makeup_main_div}>
+                  <div id={style.makeup_main_div}
+                    key={item._id}
+                    data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1200" >
                     <div id={style.makeup_img_div}>
                       <img src={item.image} alt="" />
                     </div>

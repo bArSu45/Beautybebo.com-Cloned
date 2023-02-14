@@ -18,7 +18,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import styles from "./nav.module.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const getData = (data) => {
   return axios.get(`https://pleasant-foal-cloak.cyclic.app/navbars?q=${data}`);
@@ -27,7 +27,7 @@ const getData = (data) => {
 const Navinput = () => {
   const [q, setQ] = useState("");
   const [suggestion, setSuggestion] = useState([]);
-
+  const Navigate = useNavigate();
   const handleText = (data) => {
     setQ(data);
   };
@@ -48,7 +48,7 @@ const Navinput = () => {
     return () => clearTimeout(timeout);
   }, [q]);
 
-  console.log("here suggestion", suggestion);
+ 
 
   return (
     <>
@@ -76,11 +76,17 @@ const Navinput = () => {
                 {" "}
                 <MenuItem>MAKEUP</MenuItem>
               </Link>
-           <Link to="/products">   <MenuItem>HAIR</MenuItem></Link>
+              <Link to="/products">
+                {" "}
+                <MenuItem>HAIR</MenuItem>
+              </Link>
               <MenuItem>BABY ADN CARE</MenuItem>
               <MenuItem>PERSONAL CARE</MenuItem>
 
-             <Link to="/products"> <MenuItem>FRAGRANCE</MenuItem></Link>
+              <Link to="/products">
+                {" "}
+                <MenuItem>FRAGRANCE</MenuItem>
+              </Link>
               <MenuItem>BRANDS</MenuItem>
             </MenuList>
           </Menu>
@@ -125,10 +131,18 @@ const Navinput = () => {
                         padding: "15px",
                       }}
                     >
-                      <Link to={`/products/${item._id}`}>
+                      <div
+                        onClick={() => {
+                          Navigate(`/products/${item._id}`, {
+                            state: { data: item },
+                          });
+                          setSuggestion([]);
+                          setQ("")
+                        }}
+                      >
                         <img src={item.image} style={{ height: "40px" }} />
                         <h3>{item.description}</h3>
-                      </Link>
+                      </div>
                     </div>
                   );
                 })
