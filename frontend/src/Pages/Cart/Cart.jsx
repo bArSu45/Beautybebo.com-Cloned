@@ -78,7 +78,7 @@ function Cart() {
 
   const handleCheckout = () => {
     Navigate("/checkout", {
-      state: { total_price: data.total },
+      state: { total_price: data.total,products:data.CardItem },
     });
   };
 

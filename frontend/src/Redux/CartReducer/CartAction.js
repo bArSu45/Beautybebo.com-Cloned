@@ -43,7 +43,6 @@ export const GET_CARD_DATA = (auth) => async (dispatch) => {
         token: `Bearer ${auth}`,
       },
     });
-    console.log(res)
     return dispatch(Cart_SUCCESS(res.data));
   } catch (err) {
     return dispatch(Cart_FAILURE("Error"));

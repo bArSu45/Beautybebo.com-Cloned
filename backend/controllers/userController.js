@@ -7,7 +7,7 @@ const userSignup = async (req, res) => {
   const { firstName, lastName, email, phone, password } = req.body;
 
   try {
-    const newUser = new User({
+    const savedUser = await User.create({
       firstName,
       lastName,
       email,
@@ -17,8 +17,6 @@ const userSignup = async (req, res) => {
         process.env.PASS_SECRET
       ).toString(),
     });
-
-    const savedUser = await newUser.save();
     res.status(201).json({
       message: "Signup successful",
       signupUser: savedUser,

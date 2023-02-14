@@ -49,11 +49,9 @@ const ValidationForm = () => {
     ) {
       setload(true);
       axios
-        .post(
-          "https://pleasant-foal-cloak.cyclic.app/clic.app/users/signup",
-          fields
-        )
-        .then(() => {
+        .post("https://pleasant-foal-cloak.cyclic.app/users/signup", fields)
+        .then((res) => {
+          console.log(res);
           swal({
             title: "Register successful !",
             text: "Go to Login",
@@ -65,6 +63,7 @@ const ValidationForm = () => {
           });
         })
         .catch((err) => {
+          console.log(err);
           swal({
             title: "Register Failed !",
             text: "Please Try again",

@@ -2,10 +2,10 @@ const Order = require("../models/Order");
 
 /* Create order */
 const createOrder = async (req, res) => {
-  const newOrder = new Order(req.body);
+  const payload = req.body;
 
   try {
-    const savedOrder = await newOrder.save();
+    const savedOrder = await Order.create(payload);
     res.status(200).json(savedOrder);
   } catch (error) {
     res.status(500).json(error);
@@ -14,8 +14,10 @@ const createOrder = async (req, res) => {
 
 /* GET USERS ORDER */
 const getOrdersByUser = async (req, res) => {
+  let { userId } = req.body;
+
   try {
-    const orders = await Order.find({ userId: req.params.userId });
+    const orders = await Order.find({ userId });
     res.status(200).json(orders);
   } catch (error) {
     res.status(500).json(error);

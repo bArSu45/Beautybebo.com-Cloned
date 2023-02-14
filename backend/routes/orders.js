@@ -6,7 +6,7 @@ const {
   deleteOrder,
 } = require("../controllers/orderController");
 const {
-  verifyToken,
+  CartMiddleWare,
   verifyTokenAndAuthorization,
   verifyTokenAndAdmin,
 } = require("../middlewares/verifyToken");
@@ -14,10 +14,10 @@ const {
 const orderRoute = express.Router();
 
 /* CREATE */
-orderRoute.post("/", verifyToken, createOrder);
+orderRoute.post("/", CartMiddleWare, createOrder);
 
 /* GET USER ORDERS */
-orderRoute.get("/find/:userId", verifyTokenAndAuthorization, getOrdersByUser);
+orderRoute.get("/find", CartMiddleWare, getOrdersByUser);
 
 /* GET ALL ORDERS */
 orderRoute.get("/", verifyTokenAndAdmin, getOrdersAdmin);

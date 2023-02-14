@@ -3,10 +3,8 @@ const Cart = require("../models/Cart");
 /* ADD TO CART */
 const addToCart = async (req, res) => {
   const payload = req.body;
-  const newCart = new Cart(payload);
-
   try {
-    const savedCart = await newCart.save();
+    const savedCart = await Cart.create(payload);
     res.status(200).json(savedCart);
   } catch (error) {
     res.status(500).json(error);
@@ -30,7 +28,6 @@ const updateCart = async (req, res) => {
 
 /* DELETE from CART */
 const deleteFromCart = async (req, res) => {
-  
   try {
     await Cart.findByIdAndDelete({ _id: req.params.id });
     res.status(200).json("Cart has been deleted...");
@@ -41,9 +38,9 @@ const deleteFromCart = async (req, res) => {
 
 const deleteFromCartMany = async (req, res) => {
   const userId = req.body.userId;
-  console.log(userId)
+  console.log(userId);
   try {
-    await Cart.deleteMany({userId: userId });
+    await Cart.deleteMany({ userId: userId });
     res.status(200).json("Cart has Empty...");
   } catch (error) {
     res.status(500).json(error);

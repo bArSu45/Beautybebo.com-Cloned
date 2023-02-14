@@ -13,6 +13,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import PersonalCare from "../Pages/Products/PersonalCare";
 import MakeupData from "../Pages/Products/Makeup";
 import Profile from "../Pages/Profile/Profile";
+import Order from "../Pages/Order/Order";
 
 export default function AllRoutes() {
   return (
@@ -33,6 +34,10 @@ export default function AllRoutes() {
           element={<PrivateRoutes> {<Payment />}</PrivateRoutes>}
         />
         <Route path="/products" element={<Products />} />
+        <Route
+          path="/orders"
+          element={<PrivateRoutes> {<Order />}</PrivateRoutes>}
+        />
         <Route path="/makeup" element={<MakeupData />} />
         <Route path="/products/:id" element={<SingleProduct />} />
         <Route path="/admin" element={<Admin />} />
