@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/users");
 const productRoute = require("./routes/products");
 const cartRoutes = require("./routes/carts");
-const orderRoute = require("./routes/orders");
 const dotenv = require("dotenv");
 const navbarRoutes = require("./routes/navbar");
 dotenv.config();
@@ -22,7 +21,7 @@ mongoose
   })
   .catch((err) => {
     console.log(err);
-    console.log("Unable to connect !");
+    console.log("Unable to connect!");
   });
 
 /* BASIC */
@@ -38,7 +37,6 @@ app.get("/", (req, res) => {
 app.use("/users", userRoutes);
 app.use("/products", productRoute);
 app.use("/carts", cartRoutes);
-app.use("/orders", orderRoute);
 app.use("/navbars", navbarRoutes);
 
 /* LISTENING */

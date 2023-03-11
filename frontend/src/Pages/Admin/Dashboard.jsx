@@ -1,5 +1,4 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
-import Aos from "aos";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "../../Components/CartProductCard/Loading";
@@ -45,7 +44,6 @@ export default function Dashboard() {
     setAuth(false);
   }
   useEffect(() => {
-    Aos.init();
   get_data()
 },[auth])
 
@@ -56,7 +54,6 @@ export default function Dashboard() {
       ) : (
         <Flex justifyContent="space-around" flexWrap="wrap">
           <Box
-            data-aos="flip-left"
             w="20%"
             p="5px"
             textAlign="center"
@@ -78,7 +75,6 @@ export default function Dashboard() {
           </Box>
           <Box
             w="20%"
-            data-aos="flip-right"
             p="5px"
             textAlign="center"
             border="0.2px solid grey"
@@ -94,7 +90,7 @@ export default function Dashboard() {
           </Box>
           <Box
             w="20%"
-            data-aos="flip-right"
+            
             p="5px"
             textAlign="center"
             border="0.2px solid grey"
@@ -118,7 +114,6 @@ export default function Dashboard() {
           </Box>
           <Box
             w="20%"
-            data-aos="flip-left"
             p="5px"
             textAlign="center"
             border="0.2px solid grey"

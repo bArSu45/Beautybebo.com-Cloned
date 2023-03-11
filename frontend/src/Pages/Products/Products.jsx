@@ -12,7 +12,6 @@ import { GetLocal } from "../../Utils/localstorage";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../Components/CartProductCard/Loading";
 import { Flex } from "@chakra-ui/react";
-import Aos from "aos";
 
 
 function simulateNetworkRequest() {
@@ -70,7 +69,6 @@ export default function Products() {
   };
 
   useEffect(() => {
-    Aos.init();
     Get_update()
     makeupData();
   }, []);
@@ -87,10 +85,7 @@ export default function Products() {
               makeup.map((item) => {
                 return (
                   <div id={style.makeup_main_div}
-                    key={item._id}
-                    data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1200" >
+                    key={item._id} >
                     <div id={style.makeup_img_div}>
                       <img src={item.image} alt="" />
                     </div>

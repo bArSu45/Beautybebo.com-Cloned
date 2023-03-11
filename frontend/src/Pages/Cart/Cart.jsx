@@ -14,7 +14,7 @@ import {
 import styles from "./Cart.module.css";
 import axios from "axios";
 import { GetLocal } from "../../Utils/localstorage";
-import Aos from "aos";
+
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 1000));
@@ -85,7 +85,6 @@ function Cart() {
 
   useEffect(() => {
     set_data();
-    Aos.init();
   }, [loading]);
 
   useEffect(() => {
@@ -151,7 +150,6 @@ function Cart() {
                     <Flex
                       justifyContent="space-between"
                       p="15px"
-                      data-aos="fade-right"
                     >
                       <Link to="/">
                         {" "}

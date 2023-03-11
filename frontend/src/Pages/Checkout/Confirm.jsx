@@ -2,11 +2,9 @@ import { Flex, Text } from "@chakra-ui/react";
 import React, { memo, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import Success from "../../Components/Success";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { POST_ORDER } from "../../Redux/OrderReducer/OrderAction";
 import { GetLocal } from "../../Utils/localstorage";
 import ButtonComponent from "../../Components/ButtonComponent";
 
@@ -35,7 +33,7 @@ function ConfirmModal({ amount, handleDeleteMany, data, products }) {
         address: data,
         products,
       };
-      await dispatch(POST_ORDER(order_details, Token));
+      
       handleClose();
       handleDeleteMany();
       swal({
@@ -51,7 +49,7 @@ function ConfirmModal({ amount, handleDeleteMany, data, products }) {
         address: data,
         products,
       };
-      await dispatch(POST_ORDER(order_details, Token));
+      
       handleDeleteMany();
       handleClose();
       swal({

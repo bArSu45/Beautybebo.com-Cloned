@@ -29,8 +29,6 @@ export default function Checkout() {
     
   }
 
-
-
   useEffect(() => {
     
   },[auth2])

@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Loading from "../../Components/CartProductCard/Loading";
 import { Box, Flex } from "@chakra-ui/react";
-import Aos from "aos";
 
 function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 1000));
@@ -67,7 +66,6 @@ export default function MakeupData() {
   };
 
   useEffect(() => {
-    Aos.init();
     makeupData();
     Get_update();
   }, []);
@@ -86,11 +84,7 @@ export default function MakeupData() {
               return (
                 <div
                 key={item._id}
-                  id={style.makeup_main_div}
-                  data-aos="fade-down"
-                  data-aos-easing="linear"
-                  data-aos-duration="1200"
-                >
+                  id={style.makeup_main_div}>
                   <div id={style.makeup_img_div}>
                     <img src={item.image} alt="" />
                   </div>

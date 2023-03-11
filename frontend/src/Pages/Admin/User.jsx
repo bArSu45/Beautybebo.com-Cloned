@@ -1,4 +1,4 @@
-import { Box, Text,  Button } from "@chakra-ui/react";
+import { Box, Text, Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ function simulateNetworkRequest() {
 export default function User() {
   const [user, setUser] = useState([]);
   const [render, setrender] = useState(true);
-  
+
   const { users, user_auth, isloading } = useSelector(
     (store) => store.AdminReducer
   );
@@ -25,10 +25,8 @@ export default function User() {
       setrender(false);
       setUser(users);
     });
-
-  
   };
-console.log(user)
+  console.log(user);
   // const get_quantity = async () => {
   //   await axios
   //     .get("https://pleasant-foal-cloak.cyclic.app/users/count", {
@@ -45,8 +43,7 @@ console.log(user)
     await axios
       .delete(`https://pleasant-foal-cloak.cyclic.app/users/${id}`, {
         headers: {
-          token:
-             `Bearer ${Token}`
+          token: `Bearer ${Token}`,
         },
       })
       .then((res) => {
@@ -57,15 +54,16 @@ console.log(user)
           icon: "success",
           button: "ok",
         });
-        
       })
-      .catch((err) =>  {swal({
-        title: "User Delete Failed",
-        text: "Please Try again",
-        icon: "error",
-        button: "ok",
-      })
-       setrender(true)});
+      .catch((err) => {
+        swal({
+          title: "User Delete Failed",
+          text: "Please Try again",
+          icon: "error",
+          button: "ok",
+        });
+        setrender(true);
+      });
   };
 
   useEffect(() => {
@@ -80,12 +78,7 @@ console.log(user)
         ) : (
           <>
             {user.map((singleUser) => (
-              <div
-                className={styles.single}
-                data-aos="fade-up"
-                data-aos-anchor-placement="top-bottom"
-                data-aos-duration="1500"
-              >
+              <div className={styles.single}>
                 <Box
                   bgColor="blue.100"
                   p="10px"

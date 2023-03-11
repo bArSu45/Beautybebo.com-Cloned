@@ -21,18 +21,15 @@ export default function Admin() {
   // }
 
   useEffect(() => {
-    Aos.init();
+   
   }, []);
 
-  //  const handleClick3 = (e) => {
-  //    e.preventDefault();
-  //    setPage("user");
-  //  };
+
 
   return (
     <div>
       <Flex>
-        <div className={styles.AdminSidebar} data-aos="zoom-in">
+        <div className={styles.AdminSidebar} >
           <Heading fontSize={["14px", "15px", "18px", "28px"]} mb="24px">
             Admin{" "}
           </Heading>
@@ -68,7 +65,7 @@ export default function Admin() {
             <hr className={styles.line} />
           </div>
         </div>
-        <div className={styles.AdminRightebar} data-aos="fade-up">
+        <div className={styles.AdminRightebar}>
           {page === "dashboard" ? (
             <Dashboard />
           ) : (
